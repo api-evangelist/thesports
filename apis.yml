@@ -1,31 +1,45 @@
 aid: thesports
 name: TheSports
 description: >-
-  We provide Sports Data Feeds, Live tracker and Widgets to help your business
-  growTRY FOR FREE 
+  Leading provider of real-time sports data feeds, live tracker and widgets for
+  football and US sports including NFL, NBA, MLB, and NHL.
 type: Index
 position: Consumer
 access: 3rd-Party
 image: https://kinlane-productions.s3.amazonaws.com/apis-json/apis-json-logo.jpg
 tags:
-  - API
+  - Sports
+  - Football
+  - Data
 created: '2025-03-01'
-modified: '2025-03-01'
+modified: '2026-03-16'
 url: >-
   https://raw.githubusercontent.com/api-evangelist/thesports/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
   - aid: thesports:thesports
-    name: TheSports
+    name: TheSports API
     description: >-
-      We provide Sports Data Feeds, Live tracker and Widgets to help your
-      business growTRY FOR FREE 
-    humanURL: ' https://www.thesports.com/'
+      Real-time sports data feeds, live tracker and widgets for football and US
+      sports including NFL, NBA, MLB, and NHL.
+    humanURL: https://www.thesports.com/
+    baseURL: https://api.thesports.com
     tags:
-      - API
+      - Sports
+      - Football
+      - Data
     properties:
       - type: Documentation
-        url: ' https://www.thesports.com/'
+        url: https://www.thesports.com/docs
+      - type: Website
+        url: https://www.thesports.com/
+common:
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Sign Up
+    url: https://www.thesports.com/register
 maintainers:
   - FN: Kin Lane
-    email: info@apievangelist.com
+    email: kin@apievangelist.com
