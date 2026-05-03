@@ -1,0 +1,62 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.thesports.com/schemas/match",
+  "title": "Match",
+  "description": "A football match with scheduling, score, and status information.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique match identifier."
+    },
+    "competition_id": {
+      "type": "string",
+      "description": "ID of the competition this match belongs to."
+    },
+    "season_id": {
+      "type": "string",
+      "description": "ID of the season."
+    },
+    "stage_id": {
+      "type": "string",
+      "description": "ID of the stage within the competition."
+    },
+    "home_team_id": {
+      "type": "string",
+      "description": "ID of the home team."
+    },
+    "away_team_id": {
+      "type": "string",
+      "description": "ID of the away team."
+    },
+    "status": {
+      "type": "integer",
+      "description": "Match status: 0=not started, 1=first half, 2=half time, 3=second half, 4=extra time, 5=penalties, -1=finished, -2=postponed, -3=cancelled.",
+      "enum": [0, 1, 2, 3, 4, 5, -1, -2, -3]
+    },
+    "home_score": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Goals scored by the home team."
+    },
+    "away_score": {
+      "type": "integer",
+      "minimum": 0,
+      "description": "Goals scored by the away team."
+    },
+    "scheduled": {
+      "type": "integer",
+      "description": "Unix timestamp of scheduled match kick-off time."
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "ID of the venue/stadium."
+    },
+    "referee_id": {
+      "type": "string",
+      "description": "ID of the match referee."
+    }
+  },
+  "required": ["id", "home_team_id", "away_team_id", "status"],
+  "additionalProperties": false
+}

@@ -1,0 +1,33 @@
+{
+  "@context": {
+    "@vocab": "https://schema.org/",
+    "thesports": "https://api.thesports.com/vocab#",
+    "Match": "SportsEvent",
+    "Competition": "SportsOrganization",
+    "Team": "SportsTeam",
+    "Player": "Person",
+    "home_team_id": "homeTeam",
+    "away_team_id": "awayTeam",
+    "home_score": "homeScore",
+    "away_score": "awayScore",
+    "scheduled": "startDate",
+    "competition_id": "organizer",
+    "season_id": "thesports:season",
+    "stage_id": "thesports:stage",
+    "venue_id": "location",
+    "referee_id": "thesports:referee",
+    "status": "thesports:matchStatus",
+    "short_name": "alternateName",
+    "logo": "logo",
+    "country_id": "nationality",
+    "jersey_number": "thesports:jerseyNumber",
+    "position": "thesports:playingPosition",
+    "market_value": "thesports:marketValue",
+    "possession": "thesports:possession",
+    "shots_on_target": "thesports:shotsOnTarget",
+    "points": "thesports:points",
+    "goal_difference": "thesports:goalDifference",
+    "goals_for": "thesports:goalsScored",
+    "goals_against": "thesports:goalsConceded"
+  }
+}

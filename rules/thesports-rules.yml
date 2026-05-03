@@ -1,0 +1,59 @@
+extends: spectral:oas
+rules:
+  # TheSports API-specific Spectral rules
+
+  thesports-operation-summary-title-case:
+    description: All operation summaries must use Title Case.
+    message: "Operation summary '{{value}}' should use Title Case."
+    severity: warn
+    given: "$.paths[*][*].summary"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^([A-Z][a-z0-9]*([ -][A-Z0-9][a-z0-9]*)*)$"
+
+  thesports-user-key-required:
+    description: All operations must include user_key authentication parameter.
+    message: "TheSports operations must include user_key query parameter."
+    severity: error
+    given: "$.paths[*][get,post,put,delete].parameters[*]"
+    then:
+      field: name
+      function: truthy
+
+  thesports-response-code-field:
+    description: All successful responses should return a code field.
+    message: "TheSports responses should include a code field indicating success (0) or error."
+    severity: warn
+    given: "$.paths[*][*].responses.200.content.application/json.schema.properties"
+    then:
+      field: code
+      function: truthy
+
+  thesports-response-message-field:
+    description: All successful responses should return a message field.
+    message: "TheSports responses should include a message field (e.g., 'ok')."
+    severity: warn
+    given: "$.paths[*][*].responses.200.content.application/json.schema.properties"
+    then:
+      field: message
+      function: truthy
+
+  thesports-tag-defined:
+    description: All operations must have at least one tag.
+    message: "Operations must have at least one tag for categorization."
+    severity: error
+    given: "$.paths[*][get,post,put,delete]"
+    then:
+      field: tags
+      function: truthy
+
+  thesports-operation-id-kebab-case:
+    description: Operation IDs must use camelCase.
+    message: "Operation ID '{{value}}' should use camelCase."
+    severity: warn
+    given: "$.paths[*][*].operationId"
+    then:
+      function: pattern
+      functionOptions:
+        match: "^[a-z][a-zA-Z0-9]*$"

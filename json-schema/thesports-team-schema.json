@@ -1,0 +1,44 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://api.thesports.com/schemas/team",
+  "title": "Team",
+  "description": "A football team with profile and competition information.",
+  "type": "object",
+  "properties": {
+    "id": {
+      "type": "string",
+      "description": "Unique team identifier."
+    },
+    "name": {
+      "type": "string",
+      "description": "Full team name."
+    },
+    "short_name": {
+      "type": "string",
+      "description": "Abbreviated team name."
+    },
+    "logo": {
+      "type": "string",
+      "format": "uri",
+      "description": "URL of the team logo image."
+    },
+    "country_id": {
+      "type": "string",
+      "description": "ID of the team's country."
+    },
+    "competition_id": {
+      "type": "string",
+      "description": "ID of the team's primary competition."
+    },
+    "venue_id": {
+      "type": "string",
+      "description": "ID of the team's home venue."
+    },
+    "manager_id": {
+      "type": "string",
+      "description": "ID of the team's manager/coach."
+    }
+  },
+  "required": ["id", "name"],
+  "additionalProperties": false
+}

@@ -1,0 +1,157 @@
+name: TheSports Vocabulary
+description: Domain vocabulary for TheSports football and sports data API.
+version: '1.0'
+created: '2026-05-03'
+modified: '2026-05-03'
+tags:
+  - Sports
+  - Football
+  - Data
+
+terms:
+  - term: Competition
+    definition: >-
+      An organized football league, cup, or tournament in which teams compete.
+      Examples include Premier League, FA Cup, Champions League.
+    related:
+      - Season
+      - Stage
+      - Team
+    tags:
+      - Sports
+      - Football
+
+  - term: Season
+    definition: >-
+      A football calendar period typically covering one year in which a
+      competition is contested. Most domestic leagues run August to May.
+    related:
+      - Competition
+      - Stage
+    tags:
+      - Sports
+      - Football
+
+  - term: Stage
+    definition: >-
+      A phase or round within a competition, such as group stage, knockout
+      rounds, quarter-finals, semi-finals, or final.
+    related:
+      - Competition
+      - Season
+    tags:
+      - Sports
+      - Football
+
+  - term: Match
+    definition: >-
+      A football game between two teams with a scheduled date, venue, and
+      result. Identified by a unique match ID with home and away team references.
+    related:
+      - Team
+      - Competition
+      - Venue
+      - Referee
+    tags:
+      - Sports
+      - Football
+
+  - term: Match Status
+    definition: >-
+      Numeric code indicating the current state of a match:
+      0=not started, 1=first half, 2=half time, 3=second half,
+      4=extra time, 5=penalties, -1=finished, -2=postponed, -3=cancelled.
+    related:
+      - Match
+    tags:
+      - Sports
+      - Football
+
+  - term: Team
+    definition: >-
+      A football club or national team competing in competitions.
+      Has a home venue, manager, and squad of players.
+    related:
+      - Player
+      - Competition
+      - Venue
+    tags:
+      - Sports
+      - Football
+
+  - term: Player
+    definition: >-
+      An individual footballer registered to a team. Has position,
+      jersey number, age, height, weight, and market value.
+    related:
+      - Team
+      - Position
+    tags:
+      - Sports
+      - Football
+
+  - term: Lineup
+    definition: >-
+      The starting eleven players plus substitutes selected by a manager
+      for a specific match, including the tactical formation used.
+    related:
+      - Match
+      - Player
+      - Formation
+    tags:
+      - Sports
+      - Football
+
+  - term: Formation
+    definition: >-
+      The tactical arrangement of players on the field, represented as
+      a numerical string such as 4-3-3, 4-4-2, or 3-5-2.
+    related:
+      - Lineup
+      - Team
+    tags:
+      - Sports
+      - Football
+
+  - term: Standing
+    definition: >-
+      A team's position in the league table at a given point in the season,
+      showing played, won, drawn, lost, goals for/against, and points.
+    related:
+      - Competition
+      - Team
+      - Points
+    tags:
+      - Sports
+      - Football
+
+  - term: Live Score
+    definition: >-
+      Real-time score data during an in-progress match, updated continuously
+      as goals, cards, and other events occur.
+    related:
+      - Match
+    tags:
+      - Real-Time
+      - Sports
+
+  - term: Venue
+    definition: >-
+      A football stadium or ground where matches are played, associated
+      with a specific team and geographic location.
+    related:
+      - Match
+      - Team
+    tags:
+      - Sports
+      - Football
+
+  - term: User Key
+    definition: >-
+      API authentication credential required for all TheSports API requests,
+      passed as the user_key query parameter.
+    related:
+      - Authentication
+    tags:
+      - API
+      - Authentication

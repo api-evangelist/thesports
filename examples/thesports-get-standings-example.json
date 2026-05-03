@@ -1,0 +1,46 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.thesports.com/v1/football/standings/list",
+    "parameters": {
+      "user_key": "YOUR_API_KEY",
+      "competition_id": "4",
+      "season_id": "2024"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 0,
+      "message": "ok",
+      "results": [
+        {
+          "team_id": "42",
+          "team_name": "Manchester City",
+          "position": 1,
+          "played": 38,
+          "won": 28,
+          "drawn": 5,
+          "lost": 5,
+          "goals_for": 96,
+          "goals_against": 34,
+          "goal_difference": 62,
+          "points": 89
+        },
+        {
+          "team_id": "31",
+          "team_name": "Arsenal",
+          "position": 2,
+          "played": 38,
+          "won": 28,
+          "drawn": 3,
+          "lost": 7,
+          "goals_for": 91,
+          "goals_against": 29,
+          "goal_difference": 62,
+          "points": 87
+        }
+      ]
+    }
+  }
+}

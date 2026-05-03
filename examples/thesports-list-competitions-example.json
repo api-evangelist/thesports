@@ -1,0 +1,44 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.thesports.com/v1/football/competition/list",
+    "parameters": {
+      "user_key": "YOUR_API_KEY",
+      "country_id": "1"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 0,
+      "message": "ok",
+      "results": {
+        "total": 3,
+        "data": [
+          {
+            "id": "4",
+            "name": "Premier League",
+            "short_name": "EPL",
+            "logo": "https://cdn.thesports.com/competition/4.png",
+            "country_id": "1",
+            "country_name": "England",
+            "type": 1,
+            "cur_season_id": "2024",
+            "cur_stage_id": "901"
+          },
+          {
+            "id": "5",
+            "name": "FA Cup",
+            "short_name": "FA Cup",
+            "logo": "https://cdn.thesports.com/competition/5.png",
+            "country_id": "1",
+            "country_name": "England",
+            "type": 2,
+            "cur_season_id": "2024",
+            "cur_stage_id": "902"
+          }
+        ]
+      }
+    }
+  }
+}

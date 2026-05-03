@@ -1,0 +1,39 @@
+{
+  "title": "TheSports Match Structure",
+  "description": "Structure documentation for TheSports football match data objects.",
+  "version": "1.0",
+  "structures": {
+    "Match": {
+      "description": "Core match entity with scheduling and score data.",
+      "fields": {
+        "id": { "type": "string", "required": true, "description": "Unique match identifier" },
+        "competition_id": { "type": "string", "required": false, "description": "Parent competition" },
+        "season_id": { "type": "string", "required": false, "description": "Season identifier" },
+        "stage_id": { "type": "string", "required": false, "description": "Stage within competition" },
+        "home_team_id": { "type": "string", "required": true, "description": "Home team identifier" },
+        "away_team_id": { "type": "string", "required": true, "description": "Away team identifier" },
+        "status": { "type": "integer", "required": true, "description": "Match status code (-3 to 5)" },
+        "home_score": { "type": "integer", "required": false, "description": "Home team goals" },
+        "away_score": { "type": "integer", "required": false, "description": "Away team goals" },
+        "scheduled": { "type": "integer", "required": false, "description": "Unix timestamp of kick-off" },
+        "venue_id": { "type": "string", "required": false, "description": "Venue identifier" },
+        "referee_id": { "type": "string", "required": false, "description": "Referee identifier" }
+      }
+    },
+    "ApiResponse": {
+      "description": "Standard TheSports API response envelope.",
+      "fields": {
+        "code": { "type": "integer", "required": true, "description": "0 = success, non-zero = error code" },
+        "message": { "type": "string", "required": true, "description": "Status message, 'ok' on success" },
+        "results": { "type": "object|array", "required": true, "description": "Response payload" }
+      }
+    },
+    "PaginatedResults": {
+      "description": "Paginated list response structure.",
+      "fields": {
+        "total": { "type": "integer", "required": true, "description": "Total number of records" },
+        "data": { "type": "array", "required": true, "description": "Array of result objects" }
+      }
+    }
+  }
+}

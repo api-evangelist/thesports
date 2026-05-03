@@ -1,0 +1,31 @@
+{
+  "request": {
+    "method": "GET",
+    "url": "https://api.thesports.com/v1/football/match/detail",
+    "parameters": {
+      "user_key": "YOUR_API_KEY",
+      "match_id": "1001234"
+    }
+  },
+  "response": {
+    "status": 200,
+    "body": {
+      "code": 0,
+      "message": "ok",
+      "results": {
+        "id": "1001234",
+        "competition_id": "4",
+        "season_id": "2024",
+        "stage_id": "901",
+        "home_team_id": "42",
+        "away_team_id": "31",
+        "status": -1,
+        "home_score": 3,
+        "away_score": 1,
+        "scheduled": 1714507200,
+        "venue_id": "55",
+        "referee_id": "77"
+      }
+    }
+  }
+}
