@@ -1,286 +1,471 @@
-naftiko: "1.0.0-alpha1"
-
+naftiko: 1.0.0-alpha2
 info:
-  label: "TheSports Sports Data"
-  description: >-
-    Unified sports data capability for accessing real-time football data
-    including live match tracking, standings, team and player analytics.
-    Used by media platforms, OTT services, and sports analytics applications.
+  label: TheSports Sports Data
+  description: Unified sports data capability for accessing real-time football data including live match tracking, standings,
+    team and player analytics. Used by media platforms, OTT services, and sports analytics applications.
   tags:
-    - Sports
-    - Football
-    - Real-Time
-    - Analytics
-    - Media
-  created: "2026-05-03"
-  modified: "2026-05-03"
-
+  - Sports
+  - Football
+  - Real-Time
+  - Analytics
+  - Media
+  created: '2026-05-03'
+  modified: '2026-05-06'
 binds:
-  - namespace: env
-    keys:
-      THESPORTS_API_KEY: THESPORTS_API_KEY
-
+- namespace: env
+  keys:
+    THESPORTS_API_KEY: THESPORTS_API_KEY
 capability:
   consumes:
-    - import: thesports-football
-      location: ./shared/football-api.yaml
-
+  - type: http
+    namespace: thesports-football
+    baseUri: https://api.thesports.com/v1
+    description: TheSports Football API providing real-time sports data.
+    authentication:
+      type: apikey
+      key: user_key
+      value: '{{THESPORTS_API_KEY}}'
+      placement: query
+    resources:
+    - name: competitions
+      path: /football/competition
+      description: Football competitions and league data
+      operations:
+      - name: list-competitions
+        method: GET
+        description: List all football competitions
+        inputParameters:
+        - name: country_id
+          in: query
+          type: string
+          required: false
+          description: Filter by country ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-competition-details
+        method: GET
+        description: Get detailed information about a competition
+        inputParameters:
+        - name: competition_id
+          in: query
+          type: string
+          required: true
+          description: The competition ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: teams
+      path: /football/team
+      description: Football team data
+      operations:
+      - name: list-teams
+        method: GET
+        description: List football teams
+        inputParameters:
+        - name: competition_id
+          in: query
+          type: string
+          required: false
+          description: Filter by competition ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-team-details
+        method: GET
+        description: Get detailed information about a team
+        inputParameters:
+        - name: team_id
+          in: query
+          type: string
+          required: true
+          description: The team ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: players
+      path: /football/player
+      description: Football player data
+      operations:
+      - name: list-players
+        method: GET
+        description: List players optionally filtered by team
+        inputParameters:
+        - name: team_id
+          in: query
+          type: string
+          required: false
+          description: Filter by team ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-player-details
+        method: GET
+        description: Get detailed player information and statistics
+        inputParameters:
+        - name: player_id
+          in: query
+          type: string
+          required: true
+          description: The player ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: matches
+      path: /football/match
+      description: Football match fixtures and results
+      operations:
+      - name: list-matches
+        method: GET
+        description: List matches for a competition or date
+        inputParameters:
+        - name: competition_id
+          in: query
+          type: string
+          required: false
+          description: Filter by competition ID
+        - name: date
+          in: query
+          type: string
+          required: false
+          description: Filter by date (YYYY-MM-DD)
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-match-details
+        method: GET
+        description: Get detailed match information
+        inputParameters:
+        - name: match_id
+          in: query
+          type: string
+          required: true
+          description: The match ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-match-lineup
+        method: GET
+        description: Get match lineup and substitutes
+        inputParameters:
+        - name: match_id
+          in: query
+          type: string
+          required: true
+          description: The match ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+      - name: get-match-statistics
+        method: GET
+        description: Get detailed match statistics
+        inputParameters:
+        - name: match_id
+          in: query
+          type: string
+          required: true
+          description: The match ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+    - name: standings
+      path: /football/standings
+      description: League tables and competition standings
+      operations:
+      - name: get-standings
+        method: GET
+        description: Get league standings for a competition
+        inputParameters:
+        - name: competition_id
+          in: query
+          type: string
+          required: true
+          description: The competition ID
+        - name: season_id
+          in: query
+          type: string
+          required: false
+          description: The season ID
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
   exposes:
-    - type: rest
-      port: 8080
-      namespace: sports-data-api
-      description: "Unified REST API for real-time sports data."
-      resources:
-        - path: /v1/competitions
-          name: competitions
-          description: Football competitions and leagues
-          operations:
-            - method: GET
-              name: list-competitions
-              description: List all available football competitions
-              call: "thesports-football.list-competitions"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/competitions/{competition_id}
-          name: competition-details
-          description: Single competition details
-          operations:
-            - method: GET
-              name: get-competition-details
-              description: Get detailed information about a competition
-              call: "thesports-football.get-competition-details"
-              with:
-                competition_id: "rest.competition_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/teams
-          name: teams
-          description: Football teams
-          operations:
-            - method: GET
-              name: list-teams
-              description: List football teams
-              call: "thesports-football.list-teams"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/teams/{team_id}
-          name: team-details
-          description: Single team details
-          operations:
-            - method: GET
-              name: get-team-details
-              description: Get detailed team information
-              call: "thesports-football.get-team-details"
-              with:
-                team_id: "rest.team_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/players
-          name: players
-          description: Football players
-          operations:
-            - method: GET
-              name: list-players
-              description: List players filtered by team
-              call: "thesports-football.list-players"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/players/{player_id}
-          name: player-details
-          description: Single player details
-          operations:
-            - method: GET
-              name: get-player-details
-              description: Get detailed player information and statistics
-              call: "thesports-football.get-player-details"
-              with:
-                player_id: "rest.player_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/matches
-          name: matches
-          description: Football match fixtures and results
-          operations:
-            - method: GET
-              name: list-matches
-              description: List matches for a competition or date
-              call: "thesports-football.list-matches"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/matches/{match_id}
-          name: match-details
-          description: Single match details
-          operations:
-            - method: GET
-              name: get-match-details
-              description: Get detailed match information
-              call: "thesports-football.get-match-details"
-              with:
-                match_id: "rest.match_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/matches/{match_id}/lineup
-          name: match-lineup
-          description: Match lineups
-          operations:
-            - method: GET
-              name: get-match-lineup
-              description: Get match starting lineup and substitutes
-              call: "thesports-football.get-match-lineup"
-              with:
-                match_id: "rest.match_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/matches/{match_id}/statistics
-          name: match-statistics
-          description: Match statistics
-          operations:
-            - method: GET
-              name: get-match-statistics
-              description: Get detailed match statistics
-              call: "thesports-football.get-match-statistics"
-              with:
-                match_id: "rest.match_id"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-        - path: /v1/standings
-          name: standings
-          description: League standings
-          operations:
-            - method: GET
-              name: get-standings
-              description: Get competition standings and league table
-              call: "thesports-football.get-standings"
-              outputParameters:
-                - type: object
-                  mapping: "$."
-
-    - type: mcp
-      port: 9090
-      namespace: sports-data-mcp
-      transport: http
-      description: "MCP server for AI-assisted sports data retrieval and analysis."
-      tools:
-        - name: list-competitions
-          description: List all football competitions and leagues available in the API
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.list-competitions"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-competition-details
-          description: Get detailed information about a specific football competition
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-competition-details"
-          with:
-            competition_id: "tools.competition_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-teams
-          description: List football teams, optionally filtered by competition
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.list-teams"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-team-details
-          description: Get detailed information about a specific football team
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-team-details"
-          with:
-            team_id: "tools.team_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-players
-          description: List football players, optionally filtered by team
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.list-players"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-player-details
-          description: Get detailed player profile and statistics
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-player-details"
-          with:
-            player_id: "tools.player_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: list-matches
-          description: List football matches for a competition or date
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.list-matches"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-match-details
-          description: Get detailed match information including score and events
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-match-details"
-          with:
-            match_id: "tools.match_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-match-lineup
-          description: Get match starting lineup and substitutes for both teams
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-match-lineup"
-          with:
-            match_id: "tools.match_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-match-statistics
-          description: Get detailed match statistics including possession, shots, and passes
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-match-statistics"
-          with:
-            match_id: "tools.match_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
-        - name: get-standings
-          description: Get competition standings and league table
-          hints:
-            readOnly: true
-            openWorld: true
-          call: "thesports-football.get-standings"
-          with:
-            competition_id: "tools.competition_id"
-          outputParameters:
-            - type: object
-              mapping: "$."
+  - type: rest
+    port: 8080
+    namespace: sports-data-api
+    description: Unified REST API for real-time sports data.
+    resources:
+    - path: /v1/competitions
+      name: competitions
+      description: Football competitions and leagues
+      operations:
+      - method: GET
+        name: list-competitions
+        description: List all available football competitions
+        call: thesports-football.list-competitions
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/competitions/{competition_id}
+      name: competition-details
+      description: Single competition details
+      operations:
+      - method: GET
+        name: get-competition-details
+        description: Get detailed information about a competition
+        call: thesports-football.get-competition-details
+        with:
+          competition_id: rest.competition_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/teams
+      name: teams
+      description: Football teams
+      operations:
+      - method: GET
+        name: list-teams
+        description: List football teams
+        call: thesports-football.list-teams
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/teams/{team_id}
+      name: team-details
+      description: Single team details
+      operations:
+      - method: GET
+        name: get-team-details
+        description: Get detailed team information
+        call: thesports-football.get-team-details
+        with:
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/players
+      name: players
+      description: Football players
+      operations:
+      - method: GET
+        name: list-players
+        description: List players filtered by team
+        call: thesports-football.list-players
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/players/{player_id}
+      name: player-details
+      description: Single player details
+      operations:
+      - method: GET
+        name: get-player-details
+        description: Get detailed player information and statistics
+        call: thesports-football.get-player-details
+        with:
+          player_id: rest.player_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/matches
+      name: matches
+      description: Football match fixtures and results
+      operations:
+      - method: GET
+        name: list-matches
+        description: List matches for a competition or date
+        call: thesports-football.list-matches
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/matches/{match_id}
+      name: match-details
+      description: Single match details
+      operations:
+      - method: GET
+        name: get-match-details
+        description: Get detailed match information
+        call: thesports-football.get-match-details
+        with:
+          match_id: rest.match_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/matches/{match_id}/lineup
+      name: match-lineup
+      description: Match lineups
+      operations:
+      - method: GET
+        name: get-match-lineup
+        description: Get match starting lineup and substitutes
+        call: thesports-football.get-match-lineup
+        with:
+          match_id: rest.match_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/matches/{match_id}/statistics
+      name: match-statistics
+      description: Match statistics
+      operations:
+      - method: GET
+        name: get-match-statistics
+        description: Get detailed match statistics
+        call: thesports-football.get-match-statistics
+        with:
+          match_id: rest.match_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/standings
+      name: standings
+      description: League standings
+      operations:
+      - method: GET
+        name: get-standings
+        description: Get competition standings and league table
+        call: thesports-football.get-standings
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    port: 9090
+    namespace: sports-data-mcp
+    transport: http
+    description: MCP server for AI-assisted sports data retrieval and analysis.
+    tools:
+    - name: list-competitions
+      description: List all football competitions and leagues available in the API
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.list-competitions
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-competition-details
+      description: Get detailed information about a specific football competition
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-competition-details
+      with:
+        competition_id: tools.competition_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-teams
+      description: List football teams, optionally filtered by competition
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.list-teams
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-team-details
+      description: Get detailed information about a specific football team
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-team-details
+      with:
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-players
+      description: List football players, optionally filtered by team
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.list-players
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-player-details
+      description: Get detailed player profile and statistics
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-player-details
+      with:
+        player_id: tools.player_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-matches
+      description: List football matches for a competition or date
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.list-matches
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-match-details
+      description: Get detailed match information including score and events
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-match-details
+      with:
+        match_id: tools.match_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-match-lineup
+      description: Get match starting lineup and substitutes for both teams
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-match-lineup
+      with:
+        match_id: tools.match_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-match-statistics
+      description: Get detailed match statistics including possession, shots, and passes
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-match-statistics
+      with:
+        match_id: tools.match_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: get-standings
+      description: Get competition standings and league table
+      hints:
+        readOnly: true
+        openWorld: true
+      call: thesports-football.get-standings
+      with:
+        competition_id: tools.competition_id
+      outputParameters:
+      - type: object
+        mapping: $.
