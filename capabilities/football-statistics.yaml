@@ -1,0 +1,89 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TheSports Football API — Statistics
+  description: 'TheSports Football API — Statistics. 1 operations. Lead operation: Get Match Statistics. Self-contained Naftiko
+    capability covering one Thesports business surface.'
+  tags:
+  - Thesports
+  - Statistics
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THESPORTS_API_KEY: THESPORTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: football-statistics
+    baseUri: https://api.thesports.com/v1
+    description: TheSports Football API — Statistics business capability. Self-contained, no shared references.
+    resources:
+    - name: football-match-statistics
+      path: /football/match/statistics
+      operations:
+      - name: getmatchstatistics
+        method: GET
+        description: Get Match Statistics
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: match_id
+          in: query
+          type: string
+          description: The match ID.
+          required: true
+    authentication:
+      type: apikey
+      key: user_key
+      value: '{{env.THESPORTS_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: football-statistics-rest
+    port: 8080
+    description: REST adapter for TheSports Football API — Statistics. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/football/match/statistics
+      name: football-match-statistics
+      description: REST surface for football-match-statistics.
+      operations:
+      - method: GET
+        name: getmatchstatistics
+        description: Get Match Statistics
+        call: football-statistics.getmatchstatistics
+        with:
+          user_key: rest.user_key
+          match_id: rest.match_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: football-statistics-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TheSports Football API — Statistics. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-match-statistics
+      description: Get Match Statistics
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-statistics.getmatchstatistics
+      with:
+        user_key: tools.user_key
+        match_id: tools.match_id
+      outputParameters:
+      - type: object
+        mapping: $.

@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TheSports Football API — Teams
+  description: 'TheSports Football API — Teams. 2 operations. Lead operation: Get Team Details. Self-contained Naftiko capability
+    covering one Thesports business surface.'
+  tags:
+  - Thesports
+  - Teams
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THESPORTS_API_KEY: THESPORTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: football-teams
+    baseUri: https://api.thesports.com/v1
+    description: TheSports Football API — Teams business capability. Self-contained, no shared references.
+    resources:
+    - name: football-team-additional
+      path: /football/team/additional
+      operations:
+      - name: getteamdetails
+        method: GET
+        description: Get Team Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: team_id
+          in: query
+          type: string
+          description: The team ID.
+          required: true
+    - name: football-team-list
+      path: /football/team/list
+      operations:
+      - name: listteams
+        method: GET
+        description: List Teams
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: competition_id
+          in: query
+          type: string
+          description: Filter teams by competition ID.
+    authentication:
+      type: apikey
+      key: user_key
+      value: '{{env.THESPORTS_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: football-teams-rest
+    port: 8080
+    description: REST adapter for TheSports Football API — Teams. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/football/team/additional
+      name: football-team-additional
+      description: REST surface for football-team-additional.
+      operations:
+      - method: GET
+        name: getteamdetails
+        description: Get Team Details
+        call: football-teams.getteamdetails
+        with:
+          user_key: rest.user_key
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/football/team/list
+      name: football-team-list
+      description: REST surface for football-team-list.
+      operations:
+      - method: GET
+        name: listteams
+        description: List Teams
+        call: football-teams.listteams
+        with:
+          user_key: rest.user_key
+          competition_id: rest.competition_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: football-teams-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TheSports Football API — Teams. One tool per consumed operation, routed inline through this
+      capability's consumes block.
+    tools:
+    - name: get-team-details
+      description: Get Team Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-teams.getteamdetails
+      with:
+        user_key: tools.user_key
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-teams
+      description: List Teams
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-teams.listteams
+      with:
+        user_key: tools.user_key
+        competition_id: tools.competition_id
+      outputParameters:
+      - type: object
+        mapping: $.

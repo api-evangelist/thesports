@@ -1,0 +1,137 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TheSports Football API — Players
+  description: 'TheSports Football API — Players. 2 operations. Lead operation: Get Player Details. Self-contained Naftiko
+    capability covering one Thesports business surface.'
+  tags:
+  - Thesports
+  - Players
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THESPORTS_API_KEY: THESPORTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: football-players
+    baseUri: https://api.thesports.com/v1
+    description: TheSports Football API — Players business capability. Self-contained, no shared references.
+    resources:
+    - name: football-player-additional
+      path: /football/player/additional
+      operations:
+      - name: getplayerdetails
+        method: GET
+        description: Get Player Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: player_id
+          in: query
+          type: string
+          description: The player ID.
+          required: true
+    - name: football-player-list
+      path: /football/player/list
+      operations:
+      - name: listplayers
+        method: GET
+        description: List Players
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: team_id
+          in: query
+          type: string
+          description: Filter players by team ID.
+    authentication:
+      type: apikey
+      key: user_key
+      value: '{{env.THESPORTS_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: football-players-rest
+    port: 8080
+    description: REST adapter for TheSports Football API — Players. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/football/player/additional
+      name: football-player-additional
+      description: REST surface for football-player-additional.
+      operations:
+      - method: GET
+        name: getplayerdetails
+        description: Get Player Details
+        call: football-players.getplayerdetails
+        with:
+          user_key: rest.user_key
+          player_id: rest.player_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/football/player/list
+      name: football-player-list
+      description: REST surface for football-player-list.
+      operations:
+      - method: GET
+        name: listplayers
+        description: List Players
+        call: football-players.listplayers
+        with:
+          user_key: rest.user_key
+          team_id: rest.team_id
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: football-players-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TheSports Football API — Players. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-player-details
+      description: Get Player Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-players.getplayerdetails
+      with:
+        user_key: tools.user_key
+        player_id: tools.player_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-players
+      description: List Players
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-players.listplayers
+      with:
+        user_key: tools.user_key
+        team_id: tools.team_id
+      outputParameters:
+      - type: object
+        mapping: $.

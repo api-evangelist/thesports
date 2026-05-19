@@ -1,0 +1,179 @@
+naftiko: 1.0.0-alpha2
+info:
+  label: TheSports Football API — Competitions
+  description: 'TheSports Football API — Competitions. 3 operations. Lead operation: Get Competition Details. Self-contained
+    Naftiko capability covering one Thesports business surface.'
+  tags:
+  - Thesports
+  - Competitions
+  created: '2026-05-19'
+  modified: '2026-05-19'
+binds:
+- namespace: env
+  keys:
+    THESPORTS_API_KEY: THESPORTS_API_KEY
+capability:
+  consumes:
+  - type: http
+    namespace: football-competitions
+    baseUri: https://api.thesports.com/v1
+    description: TheSports Football API — Competitions business capability. Self-contained, no shared references.
+    resources:
+    - name: football-competition-additional
+      path: /football/competition/additional
+      operations:
+      - name: getcompetitiondetails
+        method: GET
+        description: Get Competition Details
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: competition_id
+          in: query
+          type: string
+          description: The competition ID.
+          required: true
+    - name: football-competition-list
+      path: /football/competition/list
+      operations:
+      - name: listcompetitions
+        method: GET
+        description: List Competitions
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+        - name: country_id
+          in: query
+          type: string
+          description: Filter by country ID.
+    - name: football-country-list
+      path: /football/country/list
+      operations:
+      - name: listcountries
+        method: GET
+        description: List Countries
+        outputRawFormat: json
+        outputParameters:
+        - name: result
+          type: object
+          value: $.
+        inputParameters:
+        - name: user_key
+          in: query
+          type: string
+          description: Your API authentication key.
+          required: true
+    authentication:
+      type: apikey
+      key: user_key
+      value: '{{env.THESPORTS_API_KEY}}'
+      placement: query
+  exposes:
+  - type: rest
+    namespace: football-competitions-rest
+    port: 8080
+    description: REST adapter for TheSports Football API — Competitions. One Spectral-compliant resource per consumed operation,
+      prefixed with /v1.
+    resources:
+    - path: /v1/football/competition/additional
+      name: football-competition-additional
+      description: REST surface for football-competition-additional.
+      operations:
+      - method: GET
+        name: getcompetitiondetails
+        description: Get Competition Details
+        call: football-competitions.getcompetitiondetails
+        with:
+          user_key: rest.user_key
+          competition_id: rest.competition_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/football/competition/list
+      name: football-competition-list
+      description: REST surface for football-competition-list.
+      operations:
+      - method: GET
+        name: listcompetitions
+        description: List Competitions
+        call: football-competitions.listcompetitions
+        with:
+          user_key: rest.user_key
+          country_id: rest.country_id
+        outputParameters:
+        - type: object
+          mapping: $.
+    - path: /v1/football/country/list
+      name: football-country-list
+      description: REST surface for football-country-list.
+      operations:
+      - method: GET
+        name: listcountries
+        description: List Countries
+        call: football-competitions.listcountries
+        with:
+          user_key: rest.user_key
+        outputParameters:
+        - type: object
+          mapping: $.
+  - type: mcp
+    namespace: football-competitions-mcp
+    port: 9090
+    transport: http
+    description: MCP adapter for TheSports Football API — Competitions. One tool per consumed operation, routed inline through
+      this capability's consumes block.
+    tools:
+    - name: get-competition-details
+      description: Get Competition Details
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-competitions.getcompetitiondetails
+      with:
+        user_key: tools.user_key
+        competition_id: tools.competition_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-competitions
+      description: List Competitions
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-competitions.listcompetitions
+      with:
+        user_key: tools.user_key
+        country_id: tools.country_id
+      outputParameters:
+      - type: object
+        mapping: $.
+    - name: list-countries
+      description: List Countries
+      hints:
+        readOnly: true
+        destructive: false
+        idempotent: true
+      call: football-competitions.listcountries
+      with:
+        user_key: tools.user_key
+      outputParameters:
+      - type: object
+        mapping: $.
