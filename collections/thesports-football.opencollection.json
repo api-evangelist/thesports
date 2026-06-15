@@ -1,0 +1,403 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheSports Football API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_key",
+      "value": "{{user_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Competitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/country/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              }
+            ]
+          },
+          "docs": "Returns a list of all countries covered by the API."
+        },
+        {
+          "info": {
+            "name": "List Competitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/competition/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "country_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country ID."
+              }
+            ]
+          },
+          "docs": "Returns all football competitions and leagues."
+        },
+        {
+          "info": {
+            "name": "Get Competition Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/competition/additional",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "The competition ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific competition."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/team/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter teams by competition ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of football teams, optionally filtered by competition."
+        },
+        {
+          "info": {
+            "name": "Get Team Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/team/additional",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "The team ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific team."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Players",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Players",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/player/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter players by team ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of players, optionally filtered by team."
+        },
+        {
+          "info": {
+            "name": "Get Player Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/player/additional",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "query",
+                "description": "The player ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information and statistics for a specific player."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Matches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Matches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by competition ID."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Filter matches by date (YYYY-MM-DD)."
+              },
+              {
+                "name": "season_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by season ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of matches for a given date or competition."
+        },
+        {
+          "info": {
+            "name": "List Recent Matches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/recent",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by competition ID."
+              }
+            ]
+          },
+          "docs": "Returns recently completed matches."
+        },
+        {
+          "info": {
+            "name": "Get Match Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/detail",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "match_id",
+                "value": "",
+                "type": "query",
+                "description": "The match ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific match including lineups and events."
+        },
+        {
+          "info": {
+            "name": "Get Match Lineup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/lineup",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "match_id",
+                "value": "",
+                "type": "query",
+                "description": "The match ID."
+              }
+            ]
+          },
+          "docs": "Returns starting lineup and substitutes for a specific match."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Match Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/statistics",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "match_id",
+                "value": "",
+                "type": "query",
+                "description": "The match ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed match statistics including possession, shots, and passes."
+        }
+      ]
+    },
+    {
+      "info": {
+        "name": "Standings",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Standings",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/standings/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "The competition ID."
+              },
+              {
+                "name": "season_id",
+                "value": "",
+                "type": "query",
+                "description": "The season ID."
+              }
+            ]
+          },
+          "docs": "Returns the league table/standings for a competition and season."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

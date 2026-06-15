@@ -1,89 +1,130 @@
-# TheSports
+# TheSports (thesports)
 
 TheSports provides real-time sports data feeds, live trackers, and widgets covering football, basketball, tennis, esports, and other major sports worldwide. Their API delivers live scores, match statistics, player data, standings, and comprehensive sports analytics for media, broadcasters, OTT platforms, and developers.
 
-**Website:** [https://www.thesports.com/](https://www.thesports.com/)
+**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/thesports/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/thesports/refs/heads/main/apis.yml)
+
+## Scope
+
+- **Type:** Index
+- **Position:** Consumer
+- **Access:** 3rd-Party
+
+## Tags
+
+- Sports
+- Football
+- Basketball
+- Tennis
+- Esports
+- Data
+- Real-Time
+
+## Timestamps
+
+- **Created:** 2025-03-01
+- **Modified:** 2026-05-19
 
 ## APIs
 
-| Name | Description | Documentation |
-|------|-------------|---------------|
-| [TheSports Football API](https://www.thesports.com/) | Real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, and standings worldwide. | [Docs](https://www.thesports.com/docs) |
-| [TheSports Basketball API](https://www.thesports.com/) | Real-time basketball data for NBA, EuroLeague, and other major leagues. | [Docs](https://www.thesports.com/docs) |
-| [TheSports Tennis API](https://www.thesports.com/) | Tennis data for ATP, WTA, and Grand Slam tournaments. | [Docs](https://www.thesports.com/docs) |
-| [TheSports Esports API](https://www.thesports.com/) | Esports data for CS:GO, League of Legends, and other major titles. | [Docs](https://www.thesports.com/docs) |
+### TheSports Football API
 
-## Common Resources
+Real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide including major leagues and international tournaments.
 
-- **Documentation:** [https://www.thesports.com/docs](https://www.thesports.com/docs)
-- **Sign Up:** [https://www.thesports.com/register](https://www.thesports.com/register)
-- **Pricing / Free Trial:** [https://www.thesports.com/api](https://www.thesports.com/api)
+- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
+- **Base URL:** `https://api.thesports.com/v1`
 
-## OpenAPI Specifications
+#### Tags
 
-| File | Description |
-|------|-------------|
-| [thesports-football-openapi.yml](openapi/thesports-football-openapi.yml) | TheSports Football API - competitions, teams, players, matches, standings |
+- Football
+- Soccer
+- Sports
+- Real-Time
+- Data
 
-## JSON Schemas
+#### Properties
 
-| File | Description |
-|------|-------------|
-| [thesports-match-schema.json](json-schema/thesports-match-schema.json) | Football match schema |
-| [thesports-team-schema.json](json-schema/thesports-team-schema.json) | Football team schema |
+- [Documentation](https://www.thesports.com/docs)
+- [Website](https://www.thesports.com/)
+- [Pricing](https://www.thesports.com/api)
+- [Free Trial](https://www.thesports.com/api)
+- [OpenAPI](openapi/thesports-football-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
+- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [JSON Schema](json-schema/thesports-match-schema.json) — [JSON Schema](https://json-schema.org/specification)
+- [JSON Schema](json-schema/thesports-team-schema.json) — [JSON Schema](https://json-schema.org/specification)
 
-## JSON Structures
+### TheSports Basketball API
 
-| File | Description |
-|------|-------------|
-| [thesports-match-structure.json](json-structure/thesports-match-structure.json) | Match data structure documentation |
+Real-time basketball data feeds including NBA, EuroLeague, and other major leagues. Covers teams, players, matches, live scores, box scores, and season statistics.
 
-## JSON-LD
+- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
+- **Base URL:** `https://api.thesports.com/v1`
 
-| File | Description |
-|------|-------------|
-| [thesports-context.jsonld](json-ld/thesports-context.jsonld) | JSON-LD context mapping sports vocabulary to schema.org |
+#### Tags
 
-## Examples
+- Basketball
+- NBA
+- Sports
+- Real-Time
 
-| File | Description |
-|------|-------------|
-| [thesports-list-competitions-example.json](examples/thesports-list-competitions-example.json) | List competitions request/response |
-| [thesports-get-match-details-example.json](examples/thesports-get-match-details-example.json) | Get match details request/response |
-| [thesports-get-standings-example.json](examples/thesports-get-standings-example.json) | Get standings request/response |
+#### Properties
 
-## Spectral Rules
+- [Documentation](https://www.thesports.com/docs)
+- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-| File | Description |
-|------|-------------|
-| [thesports-rules.yml](rules/thesports-rules.yml) | Spectral ruleset enforcing TheSports API conventions |
+### TheSports Tennis API
 
-## Naftiko Capabilities
+Tennis data feeds covering ATP, WTA, and Grand Slam tournaments. Includes player profiles, match results, live scores, rankings, and tournament brackets.
 
-### Shared Definitions
+- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
+- **Base URL:** `https://api.thesports.com/v1`
 
-| File | Description |
-|------|-------------|
-| [capabilities/shared/football-api.yaml](capabilities/shared/football-api.yaml) | Per-API consumed definition for TheSports Football API |
+#### Tags
 
-### Workflow Capabilities
+- Tennis
+- ATP
+- WTA
+- Sports
 
-| File | Description | Tools |
-|------|-------------|-------|
-| [capabilities/sports-data.yaml](capabilities/sports-data.yaml) | Sports data retrieval for competitions, teams, matches, and standings | 11 tools |
+#### Properties
 
-## Vocabulary
+- [Documentation](https://www.thesports.com/docs)
+- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
 
-| File | Description |
-|------|-------------|
-| [thesports-vocabulary.yml](vocabulary/thesports-vocabulary.yml) | Domain vocabulary for sports data concepts |
+### TheSports Esports API
+
+Esports data feeds for CS:GO, League of Legends, and other major titles. Covers teams, players, tournaments, matches, live scores, and statistics.
+
+- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
+- **Base URL:** `https://api.thesports.com/v1`
+
+#### Tags
+
+- Esports
+- CS:GO
+- League of Legends
+- Gaming
+
+#### Properties
+
+- [Documentation](https://www.thesports.com/docs)
+- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
+- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+
+## Common Properties
+
+- [LinkedIn](https://www.linkedin.com/company/thesportsapi)
+- [Website](https://www.thesports.com/)
+- [Documentation](https://www.thesports.com/docs)
+- [Sign Up](https://www.thesports.com/register)
+- [Pricing](https://www.thesports.com/api)
+- [Free Trial](https://www.thesports.com/api)
+- [Support](https://www.thesports.com/)
 
 ## Maintainers
 
 **FN:** Kin Lane
-
 **Email:** kin@apievangelist.com
-
----
-
-*Profiled by [API Evangelist](https://apievangelist.com) on 2026-05-03*
