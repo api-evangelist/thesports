@@ -104,7 +104,7 @@ common:
     url: https://www.thesports.com/
   - type: Documentation
     url: https://www.thesports.com/docs
-  - type: SignUp
+  - type: Signup
     url: https://www.thesports.com/register
   - type: Pricing
     url: https://www.thesports.com/api
