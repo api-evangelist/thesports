@@ -98,6 +98,10 @@ apis:
       - type: Documentation
         url: https://www.thesports.com/docs
 common:
+  - type: DomainSecurity
+    url: security/thesports-domain-security.yml
+  - type: Authentication
+    url: authentication/thesports-authentication.yml
   - type: LinkedIn
     url: https://www.linkedin.com/company/thesportsapi
   - type: Website
@@ -112,6 +116,8 @@ common:
     url: https://www.thesports.com/api
   - type: Support
     url: https://www.thesports.com/
+  - url: https://www.thesports.com/newsroom
+    type: Blog
 maintainers:
   - FN: Kin Lane
     email: kin@apievangelist.com

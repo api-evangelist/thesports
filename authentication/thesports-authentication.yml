@@ -1,0 +1,16 @@
+generated: '2026-07-11'
+method: derived
+source: openapi/thesports-football-openapi.yml
+summary:
+  types:
+  - apiKey
+  api_key_in:
+  - query
+schemes:
+- name: ApiKeyAuth
+  type: apiKey
+  in: query
+  parameter: user_key
+  description: API key for authentication, obtained from TheSports developer portal.
+  sources:
+  - openapi/thesports-football-openapi.yml

@@ -1,0 +1,21 @@
+generated: '2026-07-11'
+method: probed
+source: live DNS/TLS/HTTP probes of apis.yml + OpenAPI hosts
+hosts:
+- host: www.thesports.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep  5 04:08:52 2026 GMT
+  hsts: false
+- host: api.thesports.com
+  https: true
+  tls_version: TLSv1.3
+  cert_expires: Sep 15 23:18:17 2026 GMT
+  hsts: false
+domains:
+- domain: thesports.com
+  dnssec: false
+  caa: []
+  spf: true
+  dmarc: true
+  dmarc_policy: quarantine
