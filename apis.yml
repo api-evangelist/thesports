@@ -98,6 +98,8 @@ apis:
       - type: Documentation
         url: https://www.thesports.com/docs
 common:
+  - type: AgenticAccess
+    url: agentic-access/thesports-agentic-access.yml
   - type: DomainSecurity
     url: security/thesports-domain-security.yml
   - type: Authentication
