@@ -1,0 +1,100 @@
+openapi: 3.1.0
+info:
+  title: TheSports Football Competitions Standings API
+  description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
+  version: '1.0'
+  contact:
+    url: https://www.thesports.com/
+  termsOfService: https://www.thesports.com/
+  license:
+    name: Commercial
+    url: https://www.thesports.com/api
+servers:
+- url: https://api.thesports.com/v1
+  description: TheSports API v1
+security:
+- ApiKeyAuth: []
+tags:
+- name: Standings
+  description: League tables and competition standings
+paths:
+  /football/standings/list:
+    get:
+      operationId: getStandings
+      summary: Get Standings
+      description: Returns the league table/standings for a competition and season.
+      tags:
+      - Standings
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: competition_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The competition ID.
+      - name: season_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: The season ID.
+      responses:
+        '200':
+          description: League standings
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/StandingsResponse'
+components:
+  schemas:
+    StandingEntry:
+      type: object
+      properties:
+        team_id:
+          type: string
+        team_name:
+          type: string
+        position:
+          type: integer
+        played:
+          type: integer
+        won:
+          type: integer
+        drawn:
+          type: integer
+        lost:
+          type: integer
+        goals_for:
+          type: integer
+        goals_against:
+          type: integer
+        goal_difference:
+          type: integer
+        points:
+          type: integer
+    StandingsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StandingEntry'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: user_key
+      description: API key for authentication, obtained from TheSports developer portal.
+externalDocs:
+  description: TheSports Data API Documentation
+  url: https://www.thesports.com/docs

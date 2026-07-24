@@ -1,0 +1,179 @@
+openapi: 3.1.0
+info:
+  title: TheSports Football Competitions API
+  description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
+  version: '1.0'
+  contact:
+    url: https://www.thesports.com/
+  termsOfService: https://www.thesports.com/
+  license:
+    name: Commercial
+    url: https://www.thesports.com/api
+servers:
+- url: https://api.thesports.com/v1
+  description: TheSports API v1
+security:
+- ApiKeyAuth: []
+tags:
+- name: Competitions
+  description: Football competition and league data
+paths:
+  /football/country/list:
+    get:
+      operationId: listCountries
+      summary: List Countries
+      description: Returns a list of all countries covered by the API.
+      tags:
+      - Competitions
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      responses:
+        '200':
+          description: List of countries
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CountryListResponse'
+  /football/competition/list:
+    get:
+      operationId: listCompetitions
+      summary: List Competitions
+      description: Returns all football competitions and leagues.
+      tags:
+      - Competitions
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: country_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by country ID.
+      responses:
+        '200':
+          description: List of competitions
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitionListResponse'
+  /football/competition/additional:
+    get:
+      operationId: getCompetitionDetails
+      summary: Get Competition Details
+      description: Returns detailed information about a specific competition.
+      tags:
+      - Competitions
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: competition_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The competition ID.
+      responses:
+        '200':
+          description: Competition details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/CompetitionDetailsResponse'
+components:
+  schemas:
+    Country:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        logo:
+          type: string
+    CompetitionDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Competition'
+    CompetitionListResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Competition'
+    CountryListResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+          example: 0
+        message:
+          type: string
+          example: ok
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Country'
+    Competition:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        short_name:
+          type: string
+        logo:
+          type: string
+        country_id:
+          type: string
+        country_name:
+          type: string
+        type:
+          type: integer
+        cur_season_id:
+          type: string
+        cur_stage_id:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: user_key
+      description: API key for authentication, obtained from TheSports developer portal.
+externalDocs:
+  description: TheSports Data API Documentation
+  url: https://www.thesports.com/docs

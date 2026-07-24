@@ -1,0 +1,244 @@
+openapi: 3.1.0
+info:
+  title: TheSports Football Competitions Matches API
+  description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
+  version: '1.0'
+  contact:
+    url: https://www.thesports.com/
+  termsOfService: https://www.thesports.com/
+  license:
+    name: Commercial
+    url: https://www.thesports.com/api
+servers:
+- url: https://api.thesports.com/v1
+  description: TheSports API v1
+security:
+- ApiKeyAuth: []
+tags:
+- name: Matches
+  description: Football match fixtures, results, and live data
+paths:
+  /football/match/list:
+    get:
+      operationId: listMatches
+      summary: List Matches
+      description: Returns a list of matches for a given date or competition.
+      tags:
+      - Matches
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: competition_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by competition ID.
+      - name: date
+        in: query
+        required: false
+        schema:
+          type: string
+          format: date
+        description: Filter matches by date (YYYY-MM-DD).
+      - name: season_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by season ID.
+      responses:
+        '200':
+          description: List of matches
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchListResponse'
+  /football/match/recent:
+    get:
+      operationId: listRecentMatches
+      summary: List Recent Matches
+      description: Returns recently completed matches.
+      tags:
+      - Matches
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: competition_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter by competition ID.
+      responses:
+        '200':
+          description: Recent matches
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchListResponse'
+  /football/match/detail:
+    get:
+      operationId: getMatchDetails
+      summary: Get Match Details
+      description: Returns detailed information about a specific match including lineups and events.
+      tags:
+      - Matches
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: match_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The match ID.
+      responses:
+        '200':
+          description: Match details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchDetailsResponse'
+  /football/match/lineup:
+    get:
+      operationId: getMatchLineup
+      summary: Get Match Lineup
+      description: Returns starting lineup and substitutes for a specific match.
+      tags:
+      - Matches
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: match_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The match ID.
+      responses:
+        '200':
+          description: Match lineup
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchLineupResponse'
+components:
+  schemas:
+    LineupPlayer:
+      type: object
+      properties:
+        player_id:
+          type: string
+        player_name:
+          type: string
+        position:
+          type: string
+        jersey_number:
+          type: integer
+    MatchDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Match'
+    TeamLineup:
+      type: object
+      properties:
+        formation:
+          type: string
+        starting:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineupPlayer'
+        substitutes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineupPlayer'
+    MatchListResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Match'
+    Match:
+      type: object
+      properties:
+        id:
+          type: string
+        competition_id:
+          type: string
+        season_id:
+          type: string
+        stage_id:
+          type: string
+        home_team_id:
+          type: string
+        away_team_id:
+          type: string
+        status:
+          type: integer
+          description: 0=not started, 1=first half, 2=half time, 3=second half, 4=extra time, 5=penalties, -1=finished, -2=postponed, -3=cancelled
+        home_score:
+          type: integer
+        away_score:
+          type: integer
+        scheduled:
+          type: integer
+          description: Unix timestamp of scheduled match time
+        venue_id:
+          type: string
+        referee_id:
+          type: string
+    MatchLineupResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            home:
+              $ref: '#/components/schemas/TeamLineup'
+            away:
+              $ref: '#/components/schemas/TeamLineup'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: user_key
+      description: API key for authentication, obtained from TheSports developer portal.
+externalDocs:
+  description: TheSports Data API Documentation
+  url: https://www.thesports.com/docs

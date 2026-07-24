@@ -1,0 +1,129 @@
+openapi: 3.1.0
+info:
+  title: TheSports Football Competitions Teams API
+  description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
+  version: '1.0'
+  contact:
+    url: https://www.thesports.com/
+  termsOfService: https://www.thesports.com/
+  license:
+    name: Commercial
+    url: https://www.thesports.com/api
+servers:
+- url: https://api.thesports.com/v1
+  description: TheSports API v1
+security:
+- ApiKeyAuth: []
+tags:
+- name: Teams
+  description: Football team information and statistics
+paths:
+  /football/team/list:
+    get:
+      operationId: listTeams
+      summary: List Teams
+      description: Returns a list of football teams, optionally filtered by competition.
+      tags:
+      - Teams
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: competition_id
+        in: query
+        required: false
+        schema:
+          type: string
+        description: Filter teams by competition ID.
+      responses:
+        '200':
+          description: List of teams
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamListResponse'
+  /football/team/additional:
+    get:
+      operationId: getTeamDetails
+      summary: Get Team Details
+      description: Returns detailed information about a specific team.
+      tags:
+      - Teams
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: team_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The team ID.
+      responses:
+        '200':
+          description: Team details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/TeamDetailsResponse'
+components:
+  schemas:
+    TeamDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Team'
+    TeamListResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Team'
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        short_name:
+          type: string
+        logo:
+          type: string
+        country_id:
+          type: string
+        competition_id:
+          type: string
+        venue_id:
+          type: string
+        manager_id:
+          type: string
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: user_key
+      description: API key for authentication, obtained from TheSports developer portal.
+externalDocs:
+  description: TheSports Data API Documentation
+  url: https://www.thesports.com/docs

@@ -1,0 +1,95 @@
+openapi: 3.1.0
+info:
+  title: TheSports Football Competitions Statistics API
+  description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
+  version: '1.0'
+  contact:
+    url: https://www.thesports.com/
+  termsOfService: https://www.thesports.com/
+  license:
+    name: Commercial
+    url: https://www.thesports.com/api
+servers:
+- url: https://api.thesports.com/v1
+  description: TheSports API v1
+security:
+- ApiKeyAuth: []
+tags:
+- name: Statistics
+  description: Match and player statistics
+paths:
+  /football/match/statistics:
+    get:
+      operationId: getMatchStatistics
+      summary: Get Match Statistics
+      description: Returns detailed match statistics including possession, shots, and passes.
+      tags:
+      - Statistics
+      parameters:
+      - name: user_key
+        in: query
+        required: true
+        schema:
+          type: string
+        description: Your API authentication key.
+      - name: match_id
+        in: query
+        required: true
+        schema:
+          type: string
+        description: The match ID.
+      responses:
+        '200':
+          description: Match statistics
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MatchStatisticsResponse'
+components:
+  schemas:
+    MatchStats:
+      type: object
+      properties:
+        possession:
+          type: integer
+        shots:
+          type: integer
+        shots_on_target:
+          type: integer
+        corners:
+          type: integer
+        fouls:
+          type: integer
+        yellow_cards:
+          type: integer
+        red_cards:
+          type: integer
+        offsides:
+          type: integer
+        passes:
+          type: integer
+        pass_accuracy:
+          type: integer
+    MatchStatisticsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            home:
+              $ref: '#/components/schemas/MatchStats'
+            away:
+              $ref: '#/components/schemas/MatchStats'
+  securitySchemes:
+    ApiKeyAuth:
+      type: apiKey
+      in: query
+      name: user_key
+      description: API key for authentication, obtained from TheSports developer portal.
+externalDocs:
+  description: TheSports Data API Documentation
+  url: https://www.thesports.com/docs
