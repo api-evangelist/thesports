@@ -5,9 +5,22 @@ description: >-
   esports, and other major sports worldwide. Their API delivers live scores, match statistics, player data, standings,
   and comprehensive sports analytics for media, broadcasters, OTT platforms, and developers.
 type: Index
+accessModel:
+  pricing: enterprise
+  onboarding: self-serve
+  trial: true
+  try_now: true
+  public: false
+  label: Enterprise (free trial) · Self-serve signup
+  confidence: high
+  source:
+  - plans
+  - authentication
+  generated: '2026-07-22'
+  method: derived
 position: Consumer
 access: 3rd-Party
-image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/apis-json-logo.jpg
+image: https://kinlane-images.s3.amazonaws.com/shared/apis-json/icons/thesports.png
 tags:
   - Sports
   - Football
@@ -21,82 +34,183 @@ modified: '2026-05-19'
 url: https://raw.githubusercontent.com/api-evangelist/thesports/refs/heads/main/apis.yml
 specificationVersion: '0.19'
 apis:
-  - aid: thesports:football-api
-    name: TheSports Football API
-    description: >-
-      Real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics,
-      standings, and match analysis worldwide including major leagues and international tournaments.
-    humanURL: https://www.thesports.com/
-    baseURL: https://api.thesports.com/v1
-    tags:
-      - Football
-      - Soccer
-      - Sports
-      - Real-Time
-      - Data
-    properties:
-      - type: Documentation
-        url: https://www.thesports.com/docs
-      - type: Website
-        url: https://www.thesports.com/
-      - type: Pricing
-        url: https://www.thesports.com/api
-      - type: FreeTrial
-        url: https://www.thesports.com/api
-      - type: OpenAPI
-        url: openapi/thesports-football-openapi.yml
-      - type: JSONSchema
-        url: json-schema/thesports-match-schema.json
-      - type: JSONSchema
-        url: json-schema/thesports-team-schema.json
-    contact:
-      - FN: TheSports API Support
-        url: https://www.thesports.com/
-  - aid: thesports:basketball-api
-    name: TheSports Basketball API
-    description: >-
-      Real-time basketball data feeds including NBA, EuroLeague, and other major leagues. Covers teams, players,
-      matches, live scores, box scores, and season statistics.
-    humanURL: https://www.thesports.com/
-    baseURL: https://api.thesports.com/v1
-    tags:
-      - Basketball
-      - NBA
-      - Sports
-      - Real-Time
-    properties:
-      - type: Documentation
-        url: https://www.thesports.com/docs
-  - aid: thesports:tennis-api
-    name: TheSports Tennis API
-    description: >-
-      Tennis data feeds covering ATP, WTA, and Grand Slam tournaments. Includes player profiles, match results, live
-      scores, rankings, and tournament brackets.
-    humanURL: https://www.thesports.com/
-    baseURL: https://api.thesports.com/v1
-    tags:
-      - Tennis
-      - ATP
-      - WTA
-      - Sports
-    properties:
-      - type: Documentation
-        url: https://www.thesports.com/docs
-  - aid: thesports:esports-api
-    name: TheSports Esports API
-    description: >-
-      Esports data feeds for CS:GO, League of Legends, and other major titles. Covers teams, players, tournaments,
-      matches, live scores, and statistics.
-    humanURL: https://www.thesports.com/
-    baseURL: https://api.thesports.com/v1
-    tags:
-      - Esports
-      - CS:GO
-      - League of Legends
-      - Gaming
-    properties:
-      - type: Documentation
-        url: https://www.thesports.com/docs
+- aid: thesports:basketball-api
+  name: TheSports Basketball API
+  description: >-
+    Real-time basketball data feeds including NBA, EuroLeague, and other major leagues. Covers teams,
+    players, matches, live scores, box scores, and season statistics.
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Basketball
+  - NBA
+  - Sports
+  - Real-Time
+  properties:
+  - type: Documentation
+    url: https://www.thesports.com/docs
+- aid: thesports:tennis-api
+  name: TheSports Tennis API
+  description: >-
+    Tennis data feeds covering ATP, WTA, and Grand Slam tournaments. Includes player profiles, match results,
+    live scores, rankings, and tournament brackets.
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Tennis
+  - ATP
+  - WTA
+  - Sports
+  properties:
+  - type: Documentation
+    url: https://www.thesports.com/docs
+- aid: thesports:esports-api
+  name: TheSports Esports API
+  description: >-
+    Esports data feeds for CS:GO, League of Legends, and other major titles. Covers teams, players, tournaments,
+    matches, live scores, and statistics.
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Esports
+  - CS:GO
+  - League of Legends
+  - Gaming
+  properties:
+  - type: Documentation
+    url: https://www.thesports.com/docs
+- aid: thesports:thesports-competitions-api
+  name: TheSports Competitions API
+  description: Football competition and league data
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Competitions
+  properties:
+  - type: OpenAPI
+    url: openapi/thesports-competitions-api-openapi.yml
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Pricing
+    url: https://www.thesports.com/api
+  - type: FreeTrial
+    url: https://www.thesports.com/api
+  - type: JSONSchema
+    url: json-schema/thesports-match-schema.json
+  - type: JSONSchema
+    url: json-schema/thesports-team-schema.json
+- aid: thesports:thesports-matches-api
+  name: TheSports Matches API
+  description: Football match fixtures, results, and live data
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Matches
+  properties:
+  - type: OpenAPI
+    url: openapi/thesports-matches-api-openapi.yml
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Pricing
+    url: https://www.thesports.com/api
+  - type: FreeTrial
+    url: https://www.thesports.com/api
+  - type: JSONSchema
+    url: json-schema/thesports-match-schema.json
+  - type: JSONSchema
+    url: json-schema/thesports-team-schema.json
+- aid: thesports:thesports-players-api
+  name: TheSports Players API
+  description: Football player profiles and statistics
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Players
+  properties:
+  - type: OpenAPI
+    url: openapi/thesports-players-api-openapi.yml
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Pricing
+    url: https://www.thesports.com/api
+  - type: FreeTrial
+    url: https://www.thesports.com/api
+  - type: JSONSchema
+    url: json-schema/thesports-match-schema.json
+  - type: JSONSchema
+    url: json-schema/thesports-team-schema.json
+- aid: thesports:thesports-standings-api
+  name: TheSports Standings API
+  description: League tables and competition standings
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Standings
+  properties:
+  - type: OpenAPI
+    url: openapi/thesports-standings-api-openapi.yml
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Pricing
+    url: https://www.thesports.com/api
+  - type: FreeTrial
+    url: https://www.thesports.com/api
+  - type: JSONSchema
+    url: json-schema/thesports-match-schema.json
+  - type: JSONSchema
+    url: json-schema/thesports-team-schema.json
+- aid: thesports:thesports-statistics-api
+  name: TheSports Statistics API
+  description: Match and player statistics
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Statistics
+  properties:
+  - type: OpenAPI
+    url: openapi/thesports-statistics-api-openapi.yml
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Pricing
+    url: https://www.thesports.com/api
+  - type: FreeTrial
+    url: https://www.thesports.com/api
+  - type: JSONSchema
+    url: json-schema/thesports-match-schema.json
+  - type: JSONSchema
+    url: json-schema/thesports-team-schema.json
+- aid: thesports:thesports-teams-api
+  name: TheSports Teams API
+  description: Football team information and statistics
+  humanURL: https://www.thesports.com/
+  baseURL: https://api.thesports.com/v1
+  tags:
+  - Teams
+  properties:
+  - type: OpenAPI
+    url: openapi/thesports-teams-api-openapi.yml
+  - type: Documentation
+    url: https://www.thesports.com/docs
+  - type: Website
+    url: https://www.thesports.com/
+  - type: Pricing
+    url: https://www.thesports.com/api
+  - type: FreeTrial
+    url: https://www.thesports.com/api
+  - type: JSONSchema
+    url: json-schema/thesports-match-schema.json
+  - type: JSONSchema
+    url: json-schema/thesports-team-schema.json
 common:
   - type: AgenticAccess
     url: agentic-access/thesports-agentic-access.yml
