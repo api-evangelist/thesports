@@ -1,0 +1,24 @@
+{
+  "provider": "thesports",
+  "sources": [
+    "thesports-competitions-api-openapi.yml",
+    "thesports-matches-api-openapi.yml",
+    "thesports-players-api-openapi.yml",
+    "thesports-standings-api-openapi.yml",
+    "thesports-statistics-api-openapi.yml",
+    "thesports-teams-api-openapi.yml"
+  ],
+  "outputs": [
+    "thesports-competitions-api-openapi.yml",
+    "thesports-matches-api-openapi.yml",
+    "thesports-players-api-openapi.yml",
+    "thesports-standings-api-openapi.yml",
+    "thesports-statistics-api-openapi.yml",
+    "thesports-teams-api-openapi.yml"
+  ],
+  "archived": [],
+  "errors": [],
+  "warnings": [],
+  "notes": [],
+  "skipped": []
+}
