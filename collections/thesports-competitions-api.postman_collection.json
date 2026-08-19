@@ -1,0 +1,339 @@
+{
+  "item": [
+    {
+      "id": "0a462f1e-6607-49fa-b889-b9263ab46dda",
+      "name": "Competitions",
+      "description": {
+        "content": "Football competition and league data",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "b7847caf-9a90-4888-b4ee-7173c59a5c3d",
+          "name": "List Countries",
+          "request": {
+            "name": "List Countries",
+            "description": {
+              "content": "Returns a list of all countries covered by the API.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "country",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "3b401357-5c45-436e-a513-dea45e03842d",
+              "name": "List of countries",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "country",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 0,\n  \"message\": \"ok\",\n  \"results\": {\n    \"total\": 9211,\n    \"data\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"logo\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"logo\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "afc601a1-2200-432b-b4b8-1bfa3d7050b0",
+          "name": "List Competitions",
+          "request": {
+            "name": "List Competitions",
+            "description": {
+              "content": "Returns all football competitions and leagues.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "competition",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "country_id",
+                  "value": "<string>",
+                  "description": "Filter by country ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "aa370ffa-0bd5-4898-8cd1-7a8cf4127675",
+              "name": "List of competitions",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "competition",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "country_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 7773,\n  \"message\": \"string\",\n  \"results\": {\n    \"total\": 1165,\n    \"data\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"short_name\": \"string\",\n        \"logo\": \"string\",\n        \"country_id\": \"string\",\n        \"country_name\": \"string\",\n        \"type\": 3240,\n        \"cur_season_id\": \"string\",\n        \"cur_stage_id\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"short_name\": \"string\",\n        \"logo\": \"string\",\n        \"country_id\": \"string\",\n        \"country_name\": \"string\",\n        \"type\": 3027,\n        \"cur_season_id\": \"string\",\n        \"cur_stage_id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "62068ada-e454-4eb7-87cb-8e9a57be987d",
+          "name": "Get Competition Details",
+          "request": {
+            "name": "Get Competition Details",
+            "description": {
+              "content": "Returns detailed information about a specific competition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "competition",
+                "additional"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "competition_id",
+                  "value": "<string>",
+                  "description": "(Required) The competition ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "22610cb8-2ec8-48ab-8316-55fc1d7c7043",
+              "name": "Competition details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "competition",
+                    "additional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "competition_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 9738,\n  \"message\": \"string\",\n  \"results\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"short_name\": \"string\",\n    \"logo\": \"string\",\n    \"country_id\": \"string\",\n    \"country_name\": \"string\",\n    \"type\": 7275,\n    \"cur_season_id\": \"string\",\n    \"cur_stage_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thesports.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "eecc11ef-58ed-4e19-81ad-2e0555ffc957",
+    "name": "TheSports Football Competitions API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.",
+      "type": "text/plain"
+    }
+  }
+}

@@ -1,0 +1,249 @@
+{
+  "item": [
+    {
+      "id": "e60c0f87-b516-4d2c-8801-b3e59026c710",
+      "name": "Teams",
+      "description": {
+        "content": "Football team information and statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "3d530560-f730-4aa5-a6e4-4fe2fc9917e6",
+          "name": "List Teams",
+          "request": {
+            "name": "List Teams",
+            "description": {
+              "content": "Returns a list of football teams, optionally filtered by competition.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "team",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "competition_id",
+                  "value": "<string>",
+                  "description": "Filter teams by competition ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "ed635886-c4c8-4379-ade0-d272f7b6e5e5",
+              "name": "List of teams",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "team",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "competition_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 6983,\n  \"message\": \"string\",\n  \"results\": {\n    \"total\": 4805,\n    \"data\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"short_name\": \"string\",\n        \"logo\": \"string\",\n        \"country_id\": \"string\",\n        \"competition_id\": \"string\",\n        \"venue_id\": \"string\",\n        \"manager_id\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"short_name\": \"string\",\n        \"logo\": \"string\",\n        \"country_id\": \"string\",\n        \"competition_id\": \"string\",\n        \"venue_id\": \"string\",\n        \"manager_id\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "258b1ce0-d276-46eb-a01b-0faf0b3df2d6",
+          "name": "Get Team Details",
+          "request": {
+            "name": "Get Team Details",
+            "description": {
+              "content": "Returns detailed information about a specific team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "team",
+                "additional"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "team_id",
+                  "value": "<string>",
+                  "description": "(Required) The team ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "6621e605-b82b-44c9-bdaf-208c842ef99b",
+              "name": "Team details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "team",
+                    "additional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 1575,\n  \"message\": \"string\",\n  \"results\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"short_name\": \"string\",\n    \"logo\": \"string\",\n    \"country_id\": \"string\",\n    \"competition_id\": \"string\",\n    \"venue_id\": \"string\",\n    \"manager_id\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thesports.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "ae69990f-dd58-4f63-90fc-fdc9b370cdb4",
+    "name": "TheSports Football Competitions Teams API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.",
+      "type": "text/plain"
+    }
+  }
+}

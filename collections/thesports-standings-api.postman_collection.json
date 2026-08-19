@@ -1,0 +1,159 @@
+{
+  "item": [
+    {
+      "id": "de00dd9d-e857-4f1b-aaba-5558a2200f10",
+      "name": "Standings",
+      "description": {
+        "content": "League tables and competition standings",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "5c20f799-a50a-4072-bac1-69830221997f",
+          "name": "Get Standings",
+          "request": {
+            "name": "Get Standings",
+            "description": {
+              "content": "Returns the league table/standings for a competition and season.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "standings",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "competition_id",
+                  "value": "<string>",
+                  "description": "(Required) The competition ID."
+                },
+                {
+                  "disabled": false,
+                  "key": "season_id",
+                  "value": "<string>",
+                  "description": "The season ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "8315b8b3-3cab-4b0d-885b-ec3f4e0930dd",
+              "name": "League standings",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "standings",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "competition_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "season_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 4171,\n  \"message\": \"string\",\n  \"results\": [\n    {\n      \"team_id\": \"string\",\n      \"team_name\": \"string\",\n      \"position\": 1727,\n      \"played\": 9122,\n      \"won\": 4875,\n      \"drawn\": 1163,\n      \"lost\": 4796,\n      \"goals_for\": 8972,\n      \"goals_against\": 3650,\n      \"goal_difference\": 7050,\n      \"points\": 8709\n    },\n    {\n      \"team_id\": \"string\",\n      \"team_name\": \"string\",\n      \"position\": 3751,\n      \"played\": 1553,\n      \"won\": 6598,\n      \"drawn\": 389,\n      \"lost\": 3201,\n      \"goals_for\": 2570,\n      \"goals_against\": 5706,\n      \"goal_difference\": 1007,\n      \"points\": 6772\n    }\n  ]\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thesports.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "bd9cecd9-8e7c-47d4-9b9e-68b7265a3295",
+    "name": "TheSports Football Competitions Standings API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.",
+      "type": "text/plain"
+    }
+  }
+}

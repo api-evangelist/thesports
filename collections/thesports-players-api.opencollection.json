@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheSports Football Competitions Players API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_key",
+      "value": "{{user_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Players",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Players",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/player/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter players by team ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of players, optionally filtered by team."
+        },
+        {
+          "info": {
+            "name": "Get Player Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/player/additional",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "player_id",
+                "value": "",
+                "type": "query",
+                "description": "The player ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information and statistics for a specific player."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

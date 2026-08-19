@@ -1,0 +1,95 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheSports Football Competitions API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_key",
+      "value": "{{user_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Competitions",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Countries",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/country/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              }
+            ]
+          },
+          "docs": "Returns a list of all countries covered by the API."
+        },
+        {
+          "info": {
+            "name": "List Competitions",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/competition/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "country_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by country ID."
+              }
+            ]
+          },
+          "docs": "Returns all football competitions and leagues."
+        },
+        {
+          "info": {
+            "name": "Get Competition Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/competition/additional",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "The competition ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific competition."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

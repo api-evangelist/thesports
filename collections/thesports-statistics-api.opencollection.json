@@ -1,0 +1,51 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheSports Football Competitions Statistics API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_key",
+      "value": "{{user_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Statistics",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "Get Match Statistics",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/statistics",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "match_id",
+                "value": "",
+                "type": "query",
+                "description": "The match ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed match statistics including possession, shots, and passes."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

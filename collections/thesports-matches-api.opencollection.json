@@ -1,0 +1,138 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheSports Football Competitions Matches API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_key",
+      "value": "{{user_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Matches",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Matches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by competition ID."
+              },
+              {
+                "name": "date",
+                "value": "",
+                "type": "query",
+                "description": "Filter matches by date (YYYY-MM-DD)."
+              },
+              {
+                "name": "season_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by season ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of matches for a given date or competition."
+        },
+        {
+          "info": {
+            "name": "List Recent Matches",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/recent",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter by competition ID."
+              }
+            ]
+          },
+          "docs": "Returns recently completed matches."
+        },
+        {
+          "info": {
+            "name": "Get Match Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/detail",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "match_id",
+                "value": "",
+                "type": "query",
+                "description": "The match ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific match including lineups and events."
+        },
+        {
+          "info": {
+            "name": "Get Match Lineup",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/match/lineup",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "match_id",
+                "value": "",
+                "type": "query",
+                "description": "The match ID."
+              }
+            ]
+          },
+          "docs": "Returns starting lineup and substitutes for a specific match."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

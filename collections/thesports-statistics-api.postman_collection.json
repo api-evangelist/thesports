@@ -1,0 +1,149 @@
+{
+  "item": [
+    {
+      "id": "11f2715a-d541-4889-952b-1e786db1b113",
+      "name": "Statistics",
+      "description": {
+        "content": "Match and player statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "c7b60536-4867-4173-a456-3e37de19eac1",
+          "name": "Get Match Statistics",
+          "request": {
+            "name": "Get Match Statistics",
+            "description": {
+              "content": "Returns detailed match statistics including possession, shots, and passes.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "match",
+                "statistics"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "match_id",
+                  "value": "<string>",
+                  "description": "(Required) The match ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5f889c48-8968-4678-9111-6e261d7ca058",
+              "name": "Match statistics",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "match",
+                    "statistics"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "match_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2464,\n  \"message\": \"string\",\n  \"results\": {\n    \"home\": {\n      \"possession\": 2383,\n      \"shots\": 709,\n      \"shots_on_target\": 3687,\n      \"corners\": 1447,\n      \"fouls\": 6746,\n      \"yellow_cards\": 3539,\n      \"red_cards\": 6701,\n      \"offsides\": 9121,\n      \"passes\": 3171,\n      \"pass_accuracy\": 1071\n    },\n    \"away\": {\n      \"possession\": 7121,\n      \"shots\": 6766,\n      \"shots_on_target\": 8457,\n      \"corners\": 9915,\n      \"fouls\": 7528,\n      \"yellow_cards\": 2262,\n      \"red_cards\": 5414,\n      \"offsides\": 3686,\n      \"passes\": 1749,\n      \"pass_accuracy\": 7120\n    }\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thesports.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "aed51de0-4dcb-4332-b25f-7f62a4f5aad3",
+    "name": "TheSports Football Competitions Statistics API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.",
+      "type": "text/plain"
+    }
+  }
+}

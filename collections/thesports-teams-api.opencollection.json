@@ -1,0 +1,76 @@
+{
+  "opencollection": "1.0.0",
+  "info": {
+    "name": "TheSports Football Competitions Teams API",
+    "version": "1.0"
+  },
+  "request": {
+    "auth": {
+      "type": "apikey",
+      "key": "user_key",
+      "value": "{{user_key}}",
+      "placement": "query"
+    }
+  },
+  "items": [
+    {
+      "info": {
+        "name": "Teams",
+        "type": "folder"
+      },
+      "items": [
+        {
+          "info": {
+            "name": "List Teams",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/team/list",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "competition_id",
+                "value": "",
+                "type": "query",
+                "description": "Filter teams by competition ID."
+              }
+            ]
+          },
+          "docs": "Returns a list of football teams, optionally filtered by competition."
+        },
+        {
+          "info": {
+            "name": "Get Team Details",
+            "type": "http"
+          },
+          "http": {
+            "method": "GET",
+            "url": "https://api.thesports.com/v1/football/team/additional",
+            "params": [
+              {
+                "name": "user_key",
+                "value": "",
+                "type": "query",
+                "description": "Your API authentication key."
+              },
+              {
+                "name": "team_id",
+                "value": "",
+                "type": "query",
+                "description": "The team ID."
+              }
+            ]
+          },
+          "docs": "Returns detailed information about a specific team."
+        }
+      ]
+    }
+  ],
+  "bundled": true
+}

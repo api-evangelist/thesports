@@ -1,0 +1,249 @@
+{
+  "item": [
+    {
+      "id": "ce94699d-4d15-42d8-b921-7952a79e7c6c",
+      "name": "Players",
+      "description": {
+        "content": "Football player profiles and statistics",
+        "type": "text/plain"
+      },
+      "item": [
+        {
+          "id": "532cfb3f-1562-47cf-ae06-e28706797580",
+          "name": "List Players",
+          "request": {
+            "name": "List Players",
+            "description": {
+              "content": "Returns a list of players, optionally filtered by team.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "player",
+                "list"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "team_id",
+                  "value": "<string>",
+                  "description": "Filter players by team ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "70d5fad7-329e-4f23-b806-fe438950944e",
+              "name": "List of players",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "player",
+                    "list"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "team_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 5136,\n  \"message\": \"string\",\n  \"results\": {\n    \"total\": 7604,\n    \"data\": [\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"common_name\": \"string\",\n        \"logo\": \"string\",\n        \"team_id\": \"string\",\n        \"country_id\": \"string\",\n        \"position\": \"string\",\n        \"jersey_number\": 9005,\n        \"age\": 171,\n        \"height\": 8769,\n        \"weight\": 4522,\n        \"market_value\": \"string\"\n      },\n      {\n        \"id\": \"string\",\n        \"name\": \"string\",\n        \"common_name\": \"string\",\n        \"logo\": \"string\",\n        \"team_id\": \"string\",\n        \"country_id\": \"string\",\n        \"position\": \"string\",\n        \"jersey_number\": 8829,\n        \"age\": 5623,\n        \"height\": 8885,\n        \"weight\": 90,\n        \"market_value\": \"string\"\n      }\n    ]\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        },
+        {
+          "id": "09d2b218-e98c-4cbc-be65-a9211dfc5ccf",
+          "name": "Get Player Details",
+          "request": {
+            "name": "Get Player Details",
+            "description": {
+              "content": "Returns detailed information and statistics for a specific player.",
+              "type": "text/plain"
+            },
+            "url": {
+              "path": [
+                "football",
+                "player",
+                "additional"
+              ],
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "query": [
+                {
+                  "disabled": false,
+                  "key": "user_key",
+                  "value": "<string>",
+                  "description": "(Required) Your API authentication key."
+                },
+                {
+                  "disabled": false,
+                  "key": "player_id",
+                  "value": "<string>",
+                  "description": "(Required) The player ID."
+                }
+              ],
+              "variable": []
+            },
+            "header": [
+              {
+                "key": "Accept",
+                "value": "application/json"
+              }
+            ],
+            "method": "GET",
+            "auth": null
+          },
+          "response": [
+            {
+              "id": "5d50a4d3-e017-4c91-9f25-4f0025a2fba4",
+              "name": "Player details",
+              "originalRequest": {
+                "url": {
+                  "path": [
+                    "football",
+                    "player",
+                    "additional"
+                  ],
+                  "host": [
+                    "{{baseUrl}}"
+                  ],
+                  "query": [
+                    {
+                      "key": "user_key",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "player_id",
+                      "value": "<string>"
+                    },
+                    {
+                      "key": "user_key",
+                      "value": "<API Key>"
+                    }
+                  ],
+                  "variable": []
+                },
+                "header": [
+                  {
+                    "key": "Accept",
+                    "value": "application/json"
+                  }
+                ],
+                "method": "GET",
+                "body": {}
+              },
+              "status": "OK",
+              "code": 200,
+              "header": [
+                {
+                  "key": "Content-Type",
+                  "value": "application/json"
+                }
+              ],
+              "body": "{\n  \"code\": 2980,\n  \"message\": \"string\",\n  \"results\": {\n    \"id\": \"string\",\n    \"name\": \"string\",\n    \"common_name\": \"string\",\n    \"logo\": \"string\",\n    \"team_id\": \"string\",\n    \"country_id\": \"string\",\n    \"position\": \"string\",\n    \"jersey_number\": 6390,\n    \"age\": 2914,\n    \"height\": 5870,\n    \"weight\": 3008,\n    \"market_value\": \"string\"\n  }\n}",
+              "cookie": [],
+              "_postman_previewlanguage": "json"
+            }
+          ],
+          "event": [],
+          "protocolProfileBehavior": {
+            "disableBodyPruning": true
+          }
+        }
+      ],
+      "event": []
+    }
+  ],
+  "event": [],
+  "variable": [
+    {
+      "type": "string",
+      "value": "https://api.thesports.com/v1",
+      "key": "baseUrl"
+    }
+  ],
+  "auth": {
+    "type": "apikey",
+    "apikey": [
+      {
+        "key": "key",
+        "value": "user_key"
+      },
+      {
+        "key": "value",
+        "value": "{{apiKey}}"
+      },
+      {
+        "key": "in",
+        "value": "query"
+      }
+    ]
+  },
+  "info": {
+    "_postman_id": "94a881c4-4c92-4fd1-972a-e9aef141e74d",
+    "name": "TheSports Football Competitions Players API",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "description": {
+      "content": "TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.",
+      "type": "text/plain"
+    }
+  }
+}
