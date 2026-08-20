@@ -195,6 +195,8 @@ apis:
   humanURL: https://www.thesports.com/
   baseURL: https://api.thesports.com/v1
   tags:
+  - Team
+  tags_raw:
   - Teams
   properties:
   - type: OpenAPI
