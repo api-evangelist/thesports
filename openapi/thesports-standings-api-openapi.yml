@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TheSports Football Competitions Standings API
+  title: TheSports Football Standings API
   description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
   version: '1.0'
   contact:
@@ -53,6 +53,17 @@ paths:
                 $ref: '#/components/schemas/StandingsResponse'
 components:
   schemas:
+    StandingsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StandingEntry'
     StandingEntry:
       type: object
       properties:
@@ -78,17 +89,6 @@ components:
           type: integer
         points:
           type: integer
-    StandingsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/StandingEntry'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

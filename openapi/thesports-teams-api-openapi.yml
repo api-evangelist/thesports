@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TheSports Football Competitions Teams API
+  title: TheSports Football Teams API
   description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
   version: '1.0'
   contact:
@@ -74,6 +74,25 @@ paths:
                 $ref: '#/components/schemas/TeamDetailsResponse'
 components:
   schemas:
+    Team:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        short_name:
+          type: string
+        logo:
+          type: string
+        country_id:
+          type: string
+        competition_id:
+          type: string
+        venue_id:
+          type: string
+        manager_id:
+          type: string
     TeamDetailsResponse:
       type: object
       properties:
@@ -99,25 +118,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Team'
-    Team:
-      type: object
-      properties:
-        id:
-          type: string
-        name:
-          type: string
-        short_name:
-          type: string
-        logo:
-          type: string
-        country_id:
-          type: string
-        competition_id:
-          type: string
-        venue_id:
-          type: string
-        manager_id:
-          type: string
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

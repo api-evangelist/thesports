@@ -1,12 +1,7 @@
 {
   "provider": "thesports",
   "sources": [
-    "thesports-competitions-api-openapi.yml",
-    "thesports-matches-api-openapi.yml",
-    "thesports-players-api-openapi.yml",
-    "thesports-standings-api-openapi.yml",
-    "thesports-statistics-api-openapi.yml",
-    "thesports-teams-api-openapi.yml"
+    "_original/thesports-football-openapi.yml"
   ],
   "outputs": [
     "thesports-competitions-api-openapi.yml",
@@ -19,6 +14,17 @@
   "archived": [],
   "errors": [],
   "warnings": [],
-  "notes": [],
-  "skipped": []
+  "notes": [
+    "sourced from openapi/_original/ (1 archived document(s)); previously refined output at the top level was skipped rather than re-split",
+    "thesports-football-openapi.yml: upgraded openapi 3.1.0 -> OpenAPI 3.2.0",
+    "apis.yml register: already-registered"
+  ],
+  "skipped": [
+    "thesports-competitions-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thesports-matches-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thesports-players-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thesports-standings-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thesports-statistics-api-openapi.yml: previously refined output, superseded by openapi/_original/",
+    "thesports-teams-api-openapi.yml: previously refined output, superseded by openapi/_original/"
+  ]
 }

@@ -1,6 +1,6 @@
-openapi: 3.1.0
+openapi: 3.2.0
 info:
-  title: TheSports Football Competitions Matches API
+  title: TheSports Football Matches API
   description: TheSports Football API provides real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide. Supports football and soccer leagues including major domestic competitions and international tournaments.
   version: '1.0'
   contact:
@@ -141,39 +141,6 @@ paths:
                 $ref: '#/components/schemas/MatchLineupResponse'
 components:
   schemas:
-    LineupPlayer:
-      type: object
-      properties:
-        player_id:
-          type: string
-        player_name:
-          type: string
-        position:
-          type: string
-        jersey_number:
-          type: integer
-    MatchDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Match'
-    TeamLineup:
-      type: object
-      properties:
-        formation:
-          type: string
-        starting:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineupPlayer'
-        substitutes:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineupPlayer'
     MatchListResponse:
       type: object
       properties:
@@ -190,6 +157,30 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Match'
+    LineupPlayer:
+      type: object
+      properties:
+        player_id:
+          type: string
+        player_name:
+          type: string
+        position:
+          type: string
+        jersey_number:
+          type: integer
+    TeamLineup:
+      type: object
+      properties:
+        formation:
+          type: string
+        starting:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineupPlayer'
+        substitutes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineupPlayer'
     Match:
       type: object
       properties:
@@ -219,6 +210,15 @@ components:
           type: string
         referee_id:
           type: string
+    MatchDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Match'
     MatchLineupResponse:
       type: object
       properties:
