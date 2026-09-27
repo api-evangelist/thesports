@@ -104,15 +104,6 @@ components:
           type: string
         logo:
           type: string
-    CompetitionDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Competition'
     Competition:
       type: object
       properties:
@@ -168,6 +159,15 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Country'
+    CompetitionDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Competition'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

@@ -74,15 +74,6 @@ paths:
                 $ref: '#/components/schemas/PlayerDetailsResponse'
 components:
   schemas:
-    PlayerDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Player'
     Player:
       type: object
       properties:
@@ -110,6 +101,15 @@ components:
           type: integer
         market_value:
           type: string
+    PlayerDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Player'
     PlayerListResponse:
       type: object
       properties:
