@@ -74,6 +74,15 @@ paths:
                 $ref: '#/components/schemas/TeamDetailsResponse'
 components:
   schemas:
+    TeamDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Team'
     Team:
       type: object
       properties:
@@ -109,15 +118,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Team'
-    TeamDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Team'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

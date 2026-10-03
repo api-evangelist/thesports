@@ -53,17 +53,6 @@ paths:
                 $ref: '#/components/schemas/StandingsResponse'
 components:
   schemas:
-    StandingsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          type: array
-          items:
-            $ref: '#/components/schemas/StandingEntry'
     StandingEntry:
       type: object
       properties:
@@ -89,6 +78,17 @@ components:
           type: integer
         points:
           type: integer
+    StandingsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: array
+          items:
+            $ref: '#/components/schemas/StandingEntry'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

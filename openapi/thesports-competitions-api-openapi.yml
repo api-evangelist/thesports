@@ -95,15 +95,24 @@ paths:
                 $ref: '#/components/schemas/CompetitionDetailsResponse'
 components:
   schemas:
-    Country:
+    CountryListResponse:
       type: object
       properties:
-        id:
+        code:
+          type: integer
+          example: 0
+        message:
           type: string
-        name:
-          type: string
-        logo:
-          type: string
+          example: ok
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Country'
     Competition:
       type: object
       properties:
@@ -125,6 +134,24 @@ components:
           type: string
         cur_stage_id:
           type: string
+    Country:
+      type: object
+      properties:
+        id:
+          type: string
+        name:
+          type: string
+        logo:
+          type: string
+    CompetitionDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Competition'
     CompetitionListResponse:
       type: object
       properties:
@@ -141,33 +168,6 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Competition'
-    CountryListResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-          example: 0
-        message:
-          type: string
-          example: ok
-        results:
-          type: object
-          properties:
-            total:
-              type: integer
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/Country'
-    CompetitionDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Competition'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
