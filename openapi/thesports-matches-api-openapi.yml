@@ -141,17 +141,22 @@ paths:
                 $ref: '#/components/schemas/MatchLineupResponse'
 components:
   schemas:
-    LineupPlayer:
+    MatchListResponse:
       type: object
       properties:
-        player_id:
-          type: string
-        player_name:
-          type: string
-        position:
-          type: string
-        jersey_number:
+        code:
           type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Match'
     MatchLineupResponse:
       type: object
       properties:
@@ -166,6 +171,15 @@ components:
               $ref: '#/components/schemas/TeamLineup'
             away:
               $ref: '#/components/schemas/TeamLineup'
+    MatchDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Match'
     Match:
       type: object
       properties:
@@ -195,15 +209,17 @@ components:
           type: string
         referee_id:
           type: string
-    MatchDetailsResponse:
+    LineupPlayer:
       type: object
       properties:
-        code:
-          type: integer
-        message:
+        player_id:
           type: string
-        results:
-          $ref: '#/components/schemas/Match'
+        player_name:
+          type: string
+        position:
+          type: string
+        jersey_number:
+          type: integer
     TeamLineup:
       type: object
       properties:
@@ -217,22 +233,6 @@ components:
           type: array
           items:
             $ref: '#/components/schemas/LineupPlayer'
-    MatchListResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          type: object
-          properties:
-            total:
-              type: integer
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/Match'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

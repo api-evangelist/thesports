@@ -47,20 +47,6 @@ paths:
                 $ref: '#/components/schemas/MatchStatisticsResponse'
 components:
   schemas:
-    MatchStatisticsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          type: object
-          properties:
-            home:
-              $ref: '#/components/schemas/MatchStats'
-            away:
-              $ref: '#/components/schemas/MatchStats'
     MatchStats:
       type: object
       properties:
@@ -84,6 +70,20 @@ components:
           type: integer
         pass_accuracy:
           type: integer
+    MatchStatisticsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            home:
+              $ref: '#/components/schemas/MatchStats'
+            away:
+              $ref: '#/components/schemas/MatchStats'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey

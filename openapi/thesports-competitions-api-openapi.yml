@@ -113,6 +113,31 @@ components:
               type: array
               items:
                 $ref: '#/components/schemas/Country'
+    CompetitionListResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          type: object
+          properties:
+            total:
+              type: integer
+            data:
+              type: array
+              items:
+                $ref: '#/components/schemas/Competition'
+    CompetitionDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Competition'
     Competition:
       type: object
       properties:
@@ -143,31 +168,6 @@ components:
           type: string
         logo:
           type: string
-    CompetitionDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Competition'
-    CompetitionListResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          type: object
-          properties:
-            total:
-              type: integer
-            data:
-              type: array
-              items:
-                $ref: '#/components/schemas/Competition'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
