@@ -141,6 +141,68 @@ paths:
                 $ref: '#/components/schemas/MatchLineupResponse'
 components:
   schemas:
+    TeamLineup:
+      type: object
+      properties:
+        formation:
+          type: string
+        starting:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineupPlayer'
+        substitutes:
+          type: array
+          items:
+            $ref: '#/components/schemas/LineupPlayer'
+    LineupPlayer:
+      type: object
+      properties:
+        player_id:
+          type: string
+        player_name:
+          type: string
+        position:
+          type: string
+        jersey_number:
+          type: integer
+    Match:
+      type: object
+      properties:
+        id:
+          type: string
+        competition_id:
+          type: string
+        season_id:
+          type: string
+        stage_id:
+          type: string
+        home_team_id:
+          type: string
+        away_team_id:
+          type: string
+        status:
+          type: integer
+          description: 0=not started, 1=first half, 2=half time, 3=second half, 4=extra time, 5=penalties, -1=finished, -2=postponed, -3=cancelled
+        home_score:
+          type: integer
+        away_score:
+          type: integer
+        scheduled:
+          type: integer
+          description: Unix timestamp of scheduled match time
+        venue_id:
+          type: string
+        referee_id:
+          type: string
+    MatchDetailsResponse:
+      type: object
+      properties:
+        code:
+          type: integer
+        message:
+          type: string
+        results:
+          $ref: '#/components/schemas/Match'
     MatchListResponse:
       type: object
       properties:
@@ -171,68 +233,6 @@ components:
               $ref: '#/components/schemas/TeamLineup'
             away:
               $ref: '#/components/schemas/TeamLineup'
-    MatchDetailsResponse:
-      type: object
-      properties:
-        code:
-          type: integer
-        message:
-          type: string
-        results:
-          $ref: '#/components/schemas/Match'
-    Match:
-      type: object
-      properties:
-        id:
-          type: string
-        competition_id:
-          type: string
-        season_id:
-          type: string
-        stage_id:
-          type: string
-        home_team_id:
-          type: string
-        away_team_id:
-          type: string
-        status:
-          type: integer
-          description: 0=not started, 1=first half, 2=half time, 3=second half, 4=extra time, 5=penalties, -1=finished, -2=postponed, -3=cancelled
-        home_score:
-          type: integer
-        away_score:
-          type: integer
-        scheduled:
-          type: integer
-          description: Unix timestamp of scheduled match time
-        venue_id:
-          type: string
-        referee_id:
-          type: string
-    LineupPlayer:
-      type: object
-      properties:
-        player_id:
-          type: string
-        player_name:
-          type: string
-        position:
-          type: string
-        jersey_number:
-          type: integer
-    TeamLineup:
-      type: object
-      properties:
-        formation:
-          type: string
-        starting:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineupPlayer'
-        substitutes:
-          type: array
-          items:
-            $ref: '#/components/schemas/LineupPlayer'
   securitySchemes:
     ApiKeyAuth:
       type: apiKey
