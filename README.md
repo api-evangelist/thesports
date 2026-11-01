@@ -1,4 +1,4 @@
-# TheSports (thesports)
+# TheSports
 
 <!-- API-EVANGELIST-PROVENANCE:BEGIN -->
 > ### About this repository
@@ -66,129 +66,170 @@
 
 TheSports provides real-time sports data feeds, live trackers, and widgets covering football, basketball, tennis, esports, and other major sports worldwide. Their API delivers live scores, match statistics, player data, standings, and comprehensive sports analytics for media, broadcasters, OTT platforms, and developers.
 
-**APIs.json:** [https://raw.githubusercontent.com/api-evangelist/thesports/refs/heads/main/apis.yml](https://raw.githubusercontent.com/api-evangelist/thesports/refs/heads/main/apis.yml)
+**Areas:** Sports · Football · Basketball · Tennis · Esports · Data · Real-Time
 
-## Scope
+## TheSports on APIs.io
 
-- **Type:** Index
-- **Position:** Consumer
-- **Access:** 3rd-Party
+Everything profiled for TheSports is published on APIs.io rather than in this repository. Start at the provider page — **[apis.io/providers/thesports/](https://apis.io/providers/thesports/)** — or go straight to one of the APIs or properties below.
 
-## Tags
+### APIs (9)
 
-- Sports
-- Football
-- Basketball
-- Tennis
-- Esports
-- Data
-- Real-Time
+- [TheSports Basketball API](https://apis.io/apis/thesports/basketball-api/) — Real-time basketball data feeds including NBA, EuroLeague, and other major leagues. Covers teams, players, matches, live scores, box scores, and season…
+- [TheSports Tennis API](https://apis.io/apis/thesports/tennis-api/) — Tennis data feeds covering ATP, WTA, and Grand Slam tournaments. Includes player profiles, match results, live scores, rankings, and tournament brackets.
+- [TheSports Esports API](https://apis.io/apis/thesports/esports-api/) — Esports data feeds for CS:GO, League of Legends, and other major titles. Covers teams, players, tournaments, matches, live scores, and statistics.
+- [TheSports Competitions API](https://apis.io/apis/thesports/thesports-competitions-api/) — Football competition and league data
+- [TheSports Matches API](https://apis.io/apis/thesports/thesports-matches-api/) — Football match fixtures, results, and live data
+- [TheSports Players API](https://apis.io/apis/thesports/thesports-players-api/) — Football player profiles and statistics
+- [TheSports Standings API](https://apis.io/apis/thesports/thesports-standings-api/) — League tables and competition standings
+- [TheSports Statistics API](https://apis.io/apis/thesports/thesports-statistics-api/) — Match and player statistics
+- [TheSports Teams API](https://apis.io/apis/thesports/thesports-teams-api/) — Football team information and statistics
 
-## Timestamps
+### Published properties
 
-- **Created:** 2025-03-01
-- **Modified:** 2026-05-19
+Each property below is a page on APIs.io carrying the machine-readable artifact and what it says.
 
-## APIs
+#### Agentic access (1)
 
-### TheSports Football API
+Which operations an agent can call, which act, and which need a human in the loop.
 
-Real-time football data feeds covering competitions, teams, players, matches, live scores, lineups, statistics, standings, and match analysis worldwide including major leagues and international tournaments.
+- [Thesports Agentic Access](https://apis.io/agentic-access/thesports/thesports-agentic-access/)
 
-- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
-- **Base URL:** `https://api.thesports.com/v1`
+#### JSON Schema (2)
 
-#### Tags
+The data models the API reads and writes.
 
-- Football
-- Soccer
-- Sports
-- Real-Time
-- Data
+- [Match](https://apis.io/schemas/thesports/thesports-match/)
+- [Team](https://apis.io/schemas/thesports/thesports-team/)
 
-#### Properties
+#### JSON Structure (1)
 
-- [Documentation](https://www.thesports.com/docs)
-- [Website](https://www.thesports.com/)
-- [Pricing](https://www.thesports.com/api)
-- [Free Trial](https://www.thesports.com/api)
-- [OpenAPI](openapi/thesports-football-openapi.yml) — [OpenAPI Specification](https://spec.openapis.org/oas/latest.html)
-- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
-- [JSON Schema](json-schema/thesports-match-schema.json) — [JSON Schema](https://json-schema.org/specification)
-- [JSON Schema](json-schema/thesports-team-schema.json) — [JSON Schema](https://json-schema.org/specification)
+Data models expressed in JSON Structure.
 
-### TheSports Basketball API
+- [Thesports Match Structure](https://apis.io/json-structure/thesports/thesports-match-structure/)
 
-Real-time basketball data feeds including NBA, EuroLeague, and other major leagues. Covers teams, players, matches, live scores, box scores, and season statistics.
+#### JSON-LD (1)
 
-- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
-- **Base URL:** `https://api.thesports.com/v1`
+Linked-data contexts for the provider's vocabulary.
 
-#### Tags
+- [Thesports Context](https://apis.io/jsonld/thesports/thesports-context/)
 
-- Basketball
-- NBA
-- Sports
-- Real-Time
+#### Vocabulary (1)
 
-#### Properties
+The provider's domain terms, defined.
 
-- [Documentation](https://www.thesports.com/docs)
-- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+- [TheSports Vocabulary](https://apis.io/vocabularies/thesports/thesports-vocabulary/)
 
-### TheSports Tennis API
+#### Examples (3)
 
-Tennis data feeds covering ATP, WTA, and Grand Slam tournaments. Includes player profiles, match results, live scores, rankings, and tournament brackets.
+Example requests and responses.
 
-- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
-- **Base URL:** `https://api.thesports.com/v1`
+- [Thesports Get Match Details Example](https://apis.io/examples/thesports/thesports-get-match-details-example/)
+- [Thesports Get Standings Example](https://apis.io/examples/thesports/thesports-get-standings-example/)
+- [Thesports List Competitions Example](https://apis.io/examples/thesports/thesports-list-competitions-example/)
 
-#### Tags
+#### Collections (7)
 
-- Tennis
-- ATP
-- WTA
-- Sports
+Postman and Open Collection request collections.
 
-#### Properties
+- [TheSports Football Competitions API](https://apis.io/collections/thesports/open-thesports-competitions-api/)
+- [TheSports Football API](https://apis.io/collections/thesports/open-thesports-football/)
+- [TheSports Football Competitions Matches API](https://apis.io/collections/thesports/open-thesports-matches-api/)
+- [TheSports Football Competitions Players API](https://apis.io/collections/thesports/open-thesports-players-api/)
+- [TheSports Football Competitions Standings API](https://apis.io/collections/thesports/open-thesports-standings-api/)
+- [TheSports Football Competitions Statistics API](https://apis.io/collections/thesports/open-thesports-statistics-api/)
+- [TheSports Football Competitions Teams API](https://apis.io/collections/thesports/open-thesports-teams-api/)
 
-- [Documentation](https://www.thesports.com/docs)
-- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+#### Governance rules (2)
 
-### TheSports Esports API
+Spectral rulesets for the provider's contracts.
 
-Esports data feeds for CS:GO, League of Legends, and other major titles. Covers teams, players, tournaments, matches, live scores, and statistics.
+- [TheSports — jsonschema rules](https://apis.io/rules/thesports/thesports-jsonschema-spectral-rules/)
+- [TheSports API Rules](https://apis.io/rules/thesports/thesports-rules/)
 
-- **Human URL:** [https://www.thesports.com/](https://www.thesports.com/)
-- **Base URL:** `https://api.thesports.com/v1`
+#### Security (2)
 
-#### Tags
+Authentication, trust centre, and vulnerability disclosure.
 
-- Esports
-- CS:GO
-- League of Legends
-- Gaming
+- [Thesports Authentication](https://apis.io/security/thesports/thesports-authentication/)
+- [Thesports Domain Security](https://apis.io/security/thesports/thesports-domain-security/)
 
-#### Properties
+#### Plans and pricing (1)
 
-- [Documentation](https://www.thesports.com/docs)
-- [Postman Collection](collections/thesports-football.postman_collection.json) — [Postman Collection 2.1](https://schema.getpostman.com/json/collection/v2.1.0/collection.json)
-- [Open Collection](collections/thesports-football.opencollection.json) — [Open Collection 1.0](https://schema.opencollection.com/opencollection/v1.0.0.json)
+Published plans, tiers and prices.
 
-## Common Properties
+- [Thesports Plans Pricing](https://apis.io/plans/thesports/thesports-plans-pricing/)
 
-- [LinkedIn](https://www.linkedin.com/company/thesportsapi)
+#### Rate limits (1)
+
+Published request limits.
+
+- [Thesports Rate Limits](https://apis.io/rate-limits/thesports/thesports-rate-limits/)
+
+#### FinOps (1)
+
+What the API costs to run, by operation.
+
+- [Thesports Finops](https://apis.io/finops/thesports/thesports-finops/)
+
+## Where to find this API
+
+Links to the company's own pages. This repository publishes no copy of their specifications — the canonical document is theirs and lives at the URLs below.
+
 - [Website](https://www.thesports.com/)
 - [Documentation](https://www.thesports.com/docs)
-- [Sign Up](https://www.thesports.com/register)
 - [Pricing](https://www.thesports.com/api)
-- [Free Trial](https://www.thesports.com/api)
 - [Support](https://www.thesports.com/)
+- [Blog](https://www.thesports.com/newsroom)
 
-## Maintainers
+## API Evangelist rating
 
-**FN:** Kin Lane
-**Email:** kin@apievangelist.com
+**Kin Score 35.5** — thin · rubric 0.24.0 · scored 2026-10-17
+
+| Facet | Score |
+|---|---|
+| Discoverability | 66.1 |
+| Contract quality | 59.3 |
+| Contract governance | 13.6 |
+| Operational transparency | 5.3 |
+| Developer ergonomics | 28.6 |
+| Access clarity | 28.9 |
+
+**Agent readiness 20.7** — agent-aware
+
+| Agent-readiness dimension | Result |
+|---|---|
+| Spec Presence | yes |
+| Agentic Access | derived (partial credit) |
+| Reversibility Documented | na |
+| MCP Server | — |
+| Auth Clarity | bearer (partial credit) |
+| Idempotency | na |
+| Error Semantics | — |
+| OpenAPI Examples | — |
+| Rate Limit Signal | derived (partial credit) |
+| Event Surface Described | — |
+| Agent Skills | — |
+| Well Known Catalog | — |
+| Consent Identity | — |
+| Agent Card | — |
+| Dry Run Mode | na |
+| Delegated Identity | — |
+| Protected Resource Metadata | — |
+| Dynamic Client Registration | — |
+| Agentic Commerce | — |
+
+**Regulatory alignment 16.7** — Horizontal (data, software, accessibility, platform)
+
+The rubric is published at [github.com/api-evangelist/kin-score](https://github.com/api-evangelist/kin-score). The per-check breakdown behind these numbers — which checks were earned, partial or missed — along with score history and how this provider compares to its peers, is available at [apis.io/providers/thesports/](https://apis.io/providers/thesports/).
+
+## How this profile is made
+
+API Evangelist profiles a company's public API surface the way a developer would find it: the website, developer portal and documentation, the specifications it publishes, its public repositories, and its pricing, status and changelog pages. From that it derives the properties above — contracts split per API, workflows, schemas, collections, governance rules, plans and rate limits — and scores them against the published [Kin Score rubric](https://github.com/api-evangelist/kin-score).
+
+The artifacts are published on [APIs.io](https://apis.io), not in this repository. This repository is the public record for TheSports: the place to say something is wrong, missing or out of date, and to ask for a re-score or a removal.
+
+## Open an issue
+
+- **Something about this listing** — a wrong description, a missing API, a stale artifact or a question about the rating: [open an issue on this repository](https://github.com/api-evangelist/thesports/issues/new).
+- **A new API, or one that is not in the catalog yet** — [submit it on APIs.io](https://apis.io/add/).
+- **Anything else** — [the APIs.io inbox](https://github.com/api-search/inbox/issues/new) or [info@apievangelist.com](mailto:info@apievangelist.com).
